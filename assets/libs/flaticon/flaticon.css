@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?8e9354a123e7e8e53e13a15d5c3303aa") format("truetype"),
+url("./flaticon.woff?8e9354a123e7e8e53e13a15d5c3303aa") format("woff"),
+url("./flaticon.woff2?8e9354a123e7e8e53e13a15d5c3303aa") format("woff2"),
+url("./flaticon.eot?8e9354a123e7e8e53e13a15d5c3303aa#iefix") format("embedded-opentype"),
+url("./flaticon.svg?8e9354a123e7e8e53e13a15d5c3303aa#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-garbage:before {
+    content: "\f101";
+}
+.flaticon-dashboard:before {
+    content: "\f102";
+}
+.flaticon-add:before {
+    content: "\f103";
+}
+.flaticon-turn-off:before {
+    content: "\f104";
+}
+.flaticon-box:before {
+    content: "\f105";
+}
+.flaticon-approval:before {
+    content: "\f106";
+}
+.flaticon-search:before {
+    content: "\f107";
+}
+.flaticon-female:before {
+    content: "\f108";
+}
+.flaticon-mars:before {
+    content: "\f109";
+}
+.flaticon-feathers:before {
+    content: "\f10a";
+}
+.flaticon-plus:before {
+    content: "\f10b";
+}
+.flaticon-arrow-point-to-right:before {
+    content: "\f10c";
+}
+.flaticon-cancel:before {
+    content: "\f10d";
+}

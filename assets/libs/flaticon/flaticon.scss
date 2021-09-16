@@ -1,0 +1,77 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.ttf?8e9354a123e7e8e53e13a15d5c3303aa") format("truetype"),
+url("./flaticon.woff?8e9354a123e7e8e53e13a15d5c3303aa") format("woff"),
+url("./flaticon.woff2?8e9354a123e7e8e53e13a15d5c3303aa") format("woff2"),
+url("./flaticon.eot?8e9354a123e7e8e53e13a15d5c3303aa#iefix") format("embedded-opentype"),
+url("./flaticon.svg?8e9354a123e7e8e53e13a15d5c3303aa#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "garbage": "\f101",
+    "dashboard": "\f102",
+    "add": "\f103",
+    "turn-off": "\f104",
+    "box": "\f105",
+    "approval": "\f106",
+    "search": "\f107",
+    "female": "\f108",
+    "mars": "\f109",
+    "feathers": "\f10a",
+    "plus": "\f10b",
+    "arrow-point-to-right": "\f10c",
+    "cancel": "\f10d",
+);
+
+.flaticon-garbage:before {
+    content: map-get($flaticon-map, "garbage");
+}
+.flaticon-dashboard:before {
+    content: map-get($flaticon-map, "dashboard");
+}
+.flaticon-add:before {
+    content: map-get($flaticon-map, "add");
+}
+.flaticon-turn-off:before {
+    content: map-get($flaticon-map, "turn-off");
+}
+.flaticon-box:before {
+    content: map-get($flaticon-map, "box");
+}
+.flaticon-approval:before {
+    content: map-get($flaticon-map, "approval");
+}
+.flaticon-search:before {
+    content: map-get($flaticon-map, "search");
+}
+.flaticon-female:before {
+    content: map-get($flaticon-map, "female");
+}
+.flaticon-mars:before {
+    content: map-get($flaticon-map, "mars");
+}
+.flaticon-feathers:before {
+    content: map-get($flaticon-map, "feathers");
+}
+.flaticon-plus:before {
+    content: map-get($flaticon-map, "plus");
+}
+.flaticon-arrow-point-to-right:before {
+    content: map-get($flaticon-map, "arrow-point-to-right");
+}
+.flaticon-cancel:before {
+    content: map-get($flaticon-map, "cancel");
+}
