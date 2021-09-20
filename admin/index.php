@@ -7,5 +7,5 @@ include 'include/side-nav.php';
 get_page();
 
 include 'include/footer.php';
-// 
+ 
 ?>

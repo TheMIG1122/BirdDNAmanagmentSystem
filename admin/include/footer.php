@@ -92,7 +92,7 @@
 
 <script>
     $(document).ready(function() {
-        $('table').DataTable();
+        // $('table').DataTable();
     } );
 
     <?php if (isset($_GET['send_notification'])) {
