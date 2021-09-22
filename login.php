@@ -1,4 +1,10 @@
-<?php include 'resources/config.php'; ?>
+<?php include 'resources/config.php';
+admin_login();
+
+validate_admin_login_page()
+
+
+?>
 <html lang="en"><head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">

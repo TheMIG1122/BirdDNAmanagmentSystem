@@ -1,12 +1,8 @@
-<?php
-
-
-
-include '../resources/config.php';
-
-
-
+<?php include '../resources/config.php';
+echo "Hello";
 admin_login();
+
+// validate_admin_login();
 
 
 

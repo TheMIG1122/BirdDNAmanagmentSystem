@@ -92,7 +92,7 @@
 
 <script>
     $(document).ready(function() {
-        // $('table').DataTable();
+        $('<?php echo $var['global']['table_id'] ?>').DataTable();
     } );
 
     <?php if (isset($_GET['send_notification'])) {

@@ -60,7 +60,7 @@ unset($_SESSION['error_message']);
 
 function redirect($location)
 {
-	header('Location: $location');
+	header("Location: {$location}");
 }
 
 function query($sql)
@@ -196,6 +196,48 @@ function get_record($table,$where)
 	confirm($query);
 	$data = fetch_array($query);
 	return $data;
+}
+
+/*
+
+// Admin Functions
+
+*/
+
+function validate_admin_login_page()
+{
+	if (isset($_SESSION['admin_id'])) {
+		redirect("admin");
+	}
+}
+
+
+function validate_admin_login()
+{
+	if (!isset($_SESSION['admin_id'])) {
+		redirect("../login.php");
+	}
+}
+
+function admin_login()
+{
+	if (isset($_POST['admin_login'])) {
+		extract($_POST);
+		$password = md5($password);
+		$query=query("SELECT * FROM login_details WHERE username='{$username}' AND password='{$password}'");
+		confirm($query);
+		$num = num_rows($query);
+		if ($num == 1 ) {
+			$data=fetch_array($query);
+			$id = $data["admin_id"];
+			extract($data);
+			$_SESSION['admin_id'] = $id;
+			$_SESSION['username'] = $username;
+			redirect("admin/index.php");
+		} else {
+			set_error_message("Please Enter Correct Information.");
+		}
+	}
 }
 
 // Dashboard Functions
