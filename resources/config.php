@@ -7,8 +7,8 @@ defined('base_url') ? null : define('base_url', 'http://localhost/10.100.1/Septe
 
 $var = array(
     "add_sample" => array(
-        'quality_a' => 500, 
-        'quality_b' => 600
+        'quality_amount' => array(500,600),
+        'quality_text' => array('A','B')
     ),
     "global" => array(
         "mode" => "test",

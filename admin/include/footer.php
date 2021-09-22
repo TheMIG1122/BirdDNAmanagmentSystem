@@ -58,23 +58,33 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Owner Information</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Sample Result</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form action="#" method="post">
+            <input type="hidden" id="sample_id" name="id">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                    <label>Select Gender</label>
+                    <select name="result" class="form-control">
+                        <option value="" hidden>Select</option>
+                        <option value="Fe-Male">Fe-Male</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-success" type="submit" name="update_sample">Add</button>
+              </div>
+            </div>
+            
 
         </form>
-        <div class="form-group">
-            <label>Select Gender</label>
-            <select name="">
-                <option value="" hidden>Select</option>
-                <option value="Fe-Male">Fe-Male</option>
-                <option value="Male">Male</option>
-            </select>
-        </div>
+        
       </div>
     </div>
   </div>

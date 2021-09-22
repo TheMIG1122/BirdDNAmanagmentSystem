@@ -24,7 +24,7 @@
             <div class="card p-4">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
                                     <th>Sr</th>
@@ -33,7 +33,6 @@
                                     <th>Sample Type</th>
                                     <th>Gender Result</th>
                                     <th>Quality</th>
-                                    <th>Amount</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

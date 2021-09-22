@@ -25,9 +25,9 @@
             <div class="card p-4">
                 <div class="card-body">
                     <form action="#" method="POST" class="form-box">
-                    <input type="text" name="amount" id="amount-val" class="form-control">
-                    <input type="text" name="discount" id="discount-val" class="form-control">
-                    <input type="text" name="total" id="total-val" class="form-control">
+                    <input type="hidden" name="amount" id="amount-val" class="form-control">
+                    <input type="hidden" name="discount" id="discount-val" class="form-control">
+                    <input type="hidden" name="total" id="total-val" class="form-control">
                         <div class="row">
                             <div class="col-12">
                                 <h4 class="alert alert-info text-center">Basic Info</h4>

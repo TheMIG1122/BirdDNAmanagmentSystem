@@ -1,3 +1,5 @@
+<?php update_sample_result(); ?>
+
 <div class="page-wrapper">
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">
@@ -24,7 +26,7 @@
             <div class="card p-4">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
                                     <th>Sr</th>
@@ -32,7 +34,6 @@
                                     <th>Specie</th>
                                     <th>Sample Type</th>
                                     <th>Quality</th>
-                                    <th>Amount</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

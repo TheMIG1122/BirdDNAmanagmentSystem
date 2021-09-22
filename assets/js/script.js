@@ -112,4 +112,11 @@ $(document).ready(function(){
    $(document).on('change','.select_quality',function(){
         calculate_total();
    });
+
+   // Add Result
+   $('.add-sample-result').click(function(){
+        var sample_id = $(this).attr('data-sampleID');
+        $('#sample_id').val(sample_id);
+        $("#AddResult").modal("show");
+   });
 });

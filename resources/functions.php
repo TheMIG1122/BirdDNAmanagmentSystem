@@ -168,6 +168,20 @@ function insert_data($table,$data)
 	confirm($query);
 }
 
+function update_data($table,$data,$where)
+{
+	$count = count($data);
+	$string = "";
+	foreach($data as $index => $value) {
+		$string .= $index."='".$value."',";
+	}
+	$string = substr($string,0,-1);
+	$sql = "UPDATE {$table} SET {$string} WHERE {$where}";
+	$query = query($sql);
+	confirm($query);
+}
+
+
 function birdID($length = 25) {
     $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -260,17 +274,25 @@ function add_sample()
 			$owner_id = select_field('owners','phone',$phone,'id');
 		}
 		
+		$data = array (
+			'owner_id' => $owner_id,
+			'amount' => $amount,
+			'discount' => $discount,
+			'total' => $total
+		);
+		$dna_id = insert_data_return('dna',$data);
 		$count = count($bird_id);
+
 		for ( $i=0; $i<$count; $i++ ) {
 			$data = array (
 				'bird_id' => $bird_id[$i],
 				'specie' => $specie[$i],
 				'type' => $type[$i],
 				'quality' => $quality[$i],
-				'amount' => $amount[$i],
-				'owner_id' => $owner_id
+				'owner_id' => $owner_id,
+				'dna_id' => $dna_id
 			);
-			insert_data('dna_samples',$data);
+			insert_data('samples',$data);
 		}
 
 		sweetalert('success','Sample added successfuly.','index.php?page=add_sample');
@@ -278,9 +300,23 @@ function add_sample()
 	}
 }
 
+function update_sample_result()
+{
+	if (isset($_POST['update_sample'])) {
+		extract($_POST);
+		$data = array (
+			'status' => 1,
+			'result' => $result,
+		);
+		update_data('samples',$data,'id = '.$id);
+		sweetalert('success','Sample result added successfuly.','index.php?page=pending_sample');
+	}
+}
+
 function get_pending_samples()
 {
-	$sql = "SELECT * FROM dna_samples WHERE status = 0";
+	global $var;
+	$sql = "SELECT * FROM samples WHERE status = 0";
 	$query = query($sql);
 	confirm($query);
 	$sr = 1;
@@ -288,17 +324,17 @@ function get_pending_samples()
 		extract($data);
 		$owner = get_record( 'owners',"WHERE id = {$owner_id}" );
 		extract($owner);
+		// print_r($var);
 		$row = <<<DELIMETER
 		<tr>
 			<td>{$sr}</td>
 			<td>{$bird_id}</td>
 			<td>{$specie}</td>
 			<td>{$type}</td>
-			<td>{$quality}</td>
-			<td>{$amount}</td>
+			<td><b>{$var['add_sample']['quality_text'][$quality]}</b> ({$var['add_sample']['quality_amount'][$quality]} Rs)</td>
 			<td class="text-center">
 				<a href="#" class="btn-sm btn-info border-0 show-owner-detail" data-name="{$name}" data-phone="{$phone}">Owner Detail</a> 
-				<a href="#" class="btn-sm btn-success border-0">Add Result</a>
+				<a href="#" class="btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}">Add Result</a>
 			</td>
 		</tr>
 		DELIMETER;
@@ -309,7 +345,8 @@ function get_pending_samples()
 
 function get_tested_samples()
 {
-	$sql = "SELECT * FROM dna_samples WHERE status =  1";
+	global $var;
+	$sql = "SELECT * FROM samples WHERE status =  1";
 	$query = query($sql);
 	confirm($query);
 	$sr = 1;
@@ -325,10 +362,12 @@ function get_tested_samples()
 			<td>{$specie}</td>
 			<td>{$type}</td>
 			<td>{$result}</td>
-			<td>{$quality}</td>
-			<td>{$amount}</td>
+			<td><b>{$var['add_sample']['quality_text'][$quality]}</b> ({$var['add_sample']['quality_amount'][$quality]} Rs)</td>
 			<td class="text-center">
-				<a href="#" class="btn-sm btn-info border-0 show-owner-detail" data-name="{$name}" data-phone="{$phone}">Owner Detail</a> 
+				<a href="#" class="btn-sm btn-info mt-1 border-0 show-owner-detail d-block" data-name="{$name}" data-phone="{$phone}">Owner Detail</a>
+				<a href="#" class="btn-sm btn-success mt-1 border-0 show-owner-detail d-block" data-name="{$name}" data-phone="{$phone}">Download PDF</a>
+				<a href="#" class="btn-sm btn-primary mt-1 border-0 show-owner-detail d-block" data-name="{$name}" data-phone="{$phone}">Print Card</a>
+
 			</td>
 		</tr>
 		DELIMETER;
