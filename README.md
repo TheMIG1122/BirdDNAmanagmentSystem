@@ -2,7 +2,7 @@
 
 Phases
 
-Initial
-FrontEnd
-BackEnd
-Finishing
+* Initial
+* FrontEnd
+* BackEnd
+* Finishing
