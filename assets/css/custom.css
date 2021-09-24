@@ -68,3 +68,8 @@
 .gender-result.female i {
     color: #e83e8c;
 }
+
+.middle-aligned th,.middle-aligned td {
+    vertical-align: middle;
+    text-align: center;
+}

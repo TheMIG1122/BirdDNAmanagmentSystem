@@ -194,10 +194,13 @@ function birdID($length = 25) {
 
 function create_gender_div($gender)
 {
+	$div = "";
 	if ( $gender == "Male" ) {
 		$div = '<span class="gender-result male"><i class="flaticon-mars"></i> Male</span>';
 	} else if ( $gender == "Fe-Male" ) {
 		$div = '<span class="gender-result female"><i class="flaticon-female"></i> Fe-Male</span>';
+	} else {
+		$div = '<span class="text-danger">Pending</span>';
 	}
 
 	return $div;
@@ -210,6 +213,11 @@ function get_record($table,$where)
 	confirm($query);
 	$data = fetch_array($query);
 	return $data;
+}
+
+function convert_date($date)
+{
+	return date("d-M-Y", strtotime($date));
 }
 
 /*
@@ -354,7 +362,12 @@ function get_tested_samples()
 		extract($data);
 		$owner = get_record( 'owners',"WHERE id = {$owner_id}" );
 		extract($owner);
+		$card_btn = "";
+		if ($result != "") {
+			$card_btn = '<a href="../dna_card.php?sample_id='.$data['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$phone.'">Print Card</a>';
+		}
 		$result = create_gender_div($result);
+
 		$row = <<<DELIMETER
 		<tr>
 			<td>{$sr}</td>
@@ -365,9 +378,7 @@ function get_tested_samples()
 			<td><b>{$var['add_sample']['quality_text'][$quality]}</b> ({$var['add_sample']['quality_amount'][$quality]} Rs)</td>
 			<td class="text-center">
 				<a href="#" class="btn-sm btn-info mt-1 border-0 show-owner-detail d-block" data-name="{$name}" data-phone="{$phone}">Owner Detail</a>
-				<a href="#" class="btn-sm btn-success mt-1 border-0 show-owner-detail d-block" data-name="{$name}" data-phone="{$phone}">Download PDF</a>
-				<a href="#" class="btn-sm btn-primary mt-1 border-0 show-owner-detail d-block" data-name="{$name}" data-phone="{$phone}">Print Card</a>
-
+				{$card_btn}
 			</td>
 		</tr>
 		DELIMETER;
@@ -375,3 +386,94 @@ function get_tested_samples()
 		$sr++;
 	}
 }
+
+
+function get_search_samples()
+{
+	global $var;
+	$sql = '';
+	$sql .= "SELECT owners.name,owners.phone,samples.*,dna.amount,dna.discount,dna.total,samples.id AS sample_id ";
+	$sql .= " FROM samples ";
+	$sql .= " JOIN owners ON samples.owner_id=owners.id ";
+	$sql .= " JOIN dna ON samples.dna_id=dna.id ";
+	if (isset($_POST['search_sample'])) {
+		extract($_POST);
+		if ( $type == 'owner' ) {
+			$sql .= " WHERE owners.phone = '{$phone}' ";
+		} else {
+			$sql .= " WHERE dna.id = {$dna} ";
+		}
+	}
+
+	$query = query($sql);
+	confirm($query);
+	$count = num_rows($query);
+	$tep = $count;
+	$sr = 1;
+	if ($count > 0) {
+		while ( $data = fetch_array($query) ) {
+			extract($data);
+			$card_btn = "";
+			if ($result != "") {
+				$card_btn = '<a href="../dna_card.php?sample_id='.$data['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$phone.'">Print Card</a>';
+			}
+			$result = create_gender_div($result);
+			if ($sr == 1) {
+				if ($_POST['type'] == 'owner') {
+					$rowspan = <<<DELIMETER
+					<td rowspan="{$count}">
+						<b>{$name}</b>
+						<br>
+						{$phone}
+					</td>
+					DELIMETER;
+				} else {
+					$rowspan = <<<DELIMETER
+					<td rowspan="{$count}">
+						<b>Amount</b> : {$amount}Rs <br>
+						<b>Discount</b> : {$discount}Rs <br>
+						<b>Total</b> : {$total}Rs 
+					</td>
+					DELIMETER;
+				}
+			} else {
+				$rowspan = "";
+			}
+			$row = <<<DELIMETER
+			<tr>
+				<td>{$sr}</td>
+				{$rowspan}
+				<td>{$bird_id}</td>
+				<td>{$specie}</td>
+				<td>{$type}</td>
+				<td>{$result}</td>
+				<td><b>{$var['add_sample']['quality_text'][$quality]}</b> ({$var['add_sample']['quality_amount'][$quality]}Rs)</td>
+				<td class="text-center">
+					{$card_btn}
+				</td>
+			</tr>
+			DELIMETER;
+			echo $row;
+			$sr++;
+		}
+	} else {
+		echo "<tr><td colspan='8'><p class='text-center text-danger'>No Record Found.</p></td><tr/>";
+	}
+}
+
+//  Print Card
+
+function get_sample_data()
+{
+	$sample_id = $_GET['sample_id'];
+	$sql = '';
+	$sql .= "SELECT owners.name,samples.* ";
+	$sql .= " FROM samples ";
+	$sql .= " JOIN owners ON samples.owner_id=owners.id ";
+	$sql .= " WHERE samples.id = ".$sample_id." ";
+
+	$query = query($sql);
+	$data = fetch_array($query);;
+	return $data;
+}
+
