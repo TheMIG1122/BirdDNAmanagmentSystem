@@ -1,3 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+
 .icon-span img {
     width: 25px;
 }
@@ -72,4 +81,141 @@
 .middle-aligned th,.middle-aligned td {
     vertical-align: middle;
     text-align: center;
+}
+
+
+/* PDF Css */
+
+.pdf-wrapper {
+    width: 1100px;
+    height: auto;
+    color: #000 !important;
+}
+
+.pdf-wrapper .table-outer table {
+    width: 940px;
+    /*height: 690px; */
+    border-spacing: 0px;
+}
+
+.pdf-wrapper .table-outer {
+    margin: 80px;
+}
+
+.pdf-wrapper .sample-row td {
+    height: 30px;
+    border-right: 2px solid;
+}
+
+.pdf-wrapper .sample-row td:first-child {
+    width: 40px;
+}
+
+.pdf-wrapper .sample-row td:last-child {
+    border: 0;
+}
+
+.pdf-wrapper td {
+    padding: 0;
+}
+
+.pdf-wrapper .noborder td {
+    border: 0;
+    border-bottom: 2px solid;
+}
+
+.pdf-wrapper .table-outer {
+    border: 2px solid;
+    margin: 80px;
+    overflow: hidden;
+}
+
+.pdf-wrapper .sample-row.heading td {
+    border-bottom: 2px solid;
+}
+
+.pdf-wrapper .logo-row {
+    background-color: #f2bf11;
+    padding: 20px;
+}
+
+.pdf-wrapper .logo-row td:first-child {
+    width: 200px;
+}
+
+.pdf-wrapper .logo-row td {
+    padding: 20px;
+}
+
+.pdf-wrapper .logo-row img {
+    background-color: #fff;
+    width: 100%;
+}
+
+.pdf-wrapper .text-top {
+    font-size: 35px;
+}
+
+.pdf-wrapper .text-bottom {
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.pdf-wrapper .align-center {
+    text-align: center;
+}
+
+.pdf-wrapper .submiter {
+    background-color: #ccfdcc;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 600;
+    text-align: center;
+}
+
+.pdf-wrapper .submiter span {
+    padding: 10px;
+    display: block;
+}
+
+.pdf-wrapper .noborder-f td {
+    padding: 5px;
+    text-align: left;
+}
+
+.pdf-wrapper .dna-report {
+    background: #67ccfe;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.pdf-wrapper .dna-report td {
+    padding: 10px;
+    border-top: 2px solid;
+}
+
+.pdf-wrapper .sample-row.heading {
+    background: #ccfecc;
+    font-weight: 600;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.pdf-wrapper .bottom-text {
+    padding: 25px 10px;
+    text-align: center;
+    border-top: 2px solid;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.pdf-wrapper .pad-f td {
+    padding: 5px;
+}
+
+.pdf-wrapper .sample-row td{
+    padding: 10px;
 }

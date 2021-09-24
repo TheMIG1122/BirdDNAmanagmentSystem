@@ -1,3 +1,4 @@
+<?php $submiter = "";?>
 <div class="page-wrapper">
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">
@@ -82,7 +83,7 @@
                                     </tr>
                                 </thead>
                                 <div class="tbody">
-                                    <?php get_search_samples(); ?>
+                                    <?php $samples = get_search_samples(); ?>
                                 </div>
                             </table>
                         </div>
@@ -96,3 +97,92 @@
 </div>
 
 </div>
+
+<div class="pdf-wrapper">
+        <div class="pdf-wrapper-inner">
+            <div class="table-outer-most">
+                <div class="table-outer">
+                    <table>
+                        <tbody>
+                            <tr class="noborder logo-row">
+                                <td colspan="4">
+                                    <img src="../assets/images/logo.png" alt="">
+                                </td>
+                                <td colspan="4" class="align-center">
+                                    <span class="text-top">QUALITY DNA LAB</span>
+                                    <br>
+                                    <span class="text-bottom">Research, Accuracy, Sensitivity</span>
+                                </td>
+                            </tr>
+                            <tr class="noborder submiter">
+                                <td colspan="8"><span>SUBMITTER’s INFORMATION</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tbody>
+                            <tr class="noborder-f">
+                                <td colspan="2"><b>Owner’s Name:</b></td>
+                                <td colspan="1">IMRAN BAIG</td>
+                                <td colspan="3"></td>
+                                <td colspan="1"><b>Receipt Date</b></td>
+                                <td colspan="1">12-Sep-21</td>
+                            </tr>
+                            <tr class="noborder-f pad-f">
+                                <td colspan="2"><b>Contact No.</b></td>
+                                <td colspan="1">03214584644</td>
+                                <td colspan="3"></td>
+                                <td colspan="1"><b>Report Date</b></td>
+                                <td colspan="1">12-Sep-21</td>
+                            </tr>
+                            <tr class="noborder dna-report">
+                                <td colspan="8">
+                                    QUALITY DNA Sexing Report
+                                </td>
+                            </tr>
+                            <tr class="sample-row heading">
+                                <td>Sr#</td>
+                                <td colspan="2">Specie</td>
+                                <td colspan="2">Bird's Name / ID</td>
+                                <td>Sample Type</td>
+                                <td>DNA-ID</td>
+                                <td>DNA Result</td>
+                            </tr>
+                            <?php echo $samples;?>
+                            <tr class="sample-row">
+                                <td></td>
+                                <td colspan="2"></td>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="sample-row">
+                                <td></td>
+                                <td colspan="2"></td>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="sample-row">
+                                <td></td>
+                                <td colspan="2"></td>
+                                <td colspan="2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="bottom-text">
+                        Ali Birds Shop, Chaudhary Canal Birds Market, Fateh Garh Lahore.
+                        <br>
+                        0322-8432745, 0324-4667726
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

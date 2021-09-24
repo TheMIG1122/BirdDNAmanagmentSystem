@@ -391,8 +391,11 @@ function get_tested_samples()
 function get_search_samples()
 {
 	global $var;
+	global $samples;
+	echo $samples;
+	$samples_div = "";
 	$sql = '';
-	$sql .= "SELECT owners.name,owners.phone,samples.*,dna.amount,dna.discount,dna.total,samples.id AS sample_id ";
+	$sql .= "SELECT owners.name,owners.phone,samples.*,dna.id AS dna_id,dna.amount,dna.discount,dna.total,samples.id AS sample_id ";
 	$sql .= " FROM samples ";
 	$sql .= " JOIN owners ON samples.owner_id=owners.id ";
 	$sql .= " JOIN dna ON samples.dna_id=dna.id ";
@@ -417,7 +420,12 @@ function get_search_samples()
 			if ($result != "") {
 				$card_btn = '<a href="../dna_card.php?sample_id='.$data['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$phone.'">Print Card</a>';
 			}
-			$result = create_gender_div($result);
+			if ($result == "") {
+				$result = "<span class='text-danger'>Pending</span>";
+				$data['result'] = $result;
+			} else {
+				$result = create_gender_div($result);
+			}
 			if ($sr == 1) {
 				if ($_POST['type'] == 'owner') {
 					$rowspan = <<<DELIMETER
@@ -453,12 +461,23 @@ function get_search_samples()
 				</td>
 			</tr>
 			DELIMETER;
+			$samples_div .= <<<DELIMETER
+			<tr class="sample-row">
+				<td>{$sr}</td>
+				<td colspan="2">{$specie}</td>
+				<td colspan="1">{$type}</td>
+				<td colspan="2">{$bird_id}</td>
+				<td>{$dna_id}</td>
+				<td>{$data['result']}</td>
+			</tr>
+			DELIMETER;
 			echo $row;
 			$sr++;
 		}
 	} else {
 		echo "<tr><td colspan='8'><p class='text-center text-danger'>No Record Found.</p></td><tr/>";
 	}
+	return $samples_div;
 }
 
 //  Print Card
