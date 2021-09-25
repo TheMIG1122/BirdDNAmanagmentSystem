@@ -2,12 +2,12 @@
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">
 			<div class="col-5">
-				<h4 class="page-title">Tested Samples</h4>
+				<h4 class="page-title">DNA Detail</h4>
 				<div class="d-flex align-items-center">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="#">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Tested</li>
+							<li class="breadcrumb-item active" aria-current="page">Detail</li>
 						</ol>
 					</nav>
 				</div>
@@ -23,6 +23,7 @@
         <div class="col-md-12 col-xl-12">
             <div class="card p-4">
                 <div class="card-body">
+                    <a href="#" class='btn btn-success border-0 pay-cash mb-3' data-dnaid='<?php echo $_GET['dna_id']?>' data-cashamount='<?php echo $_GET['cashamount']?>'>Pay Cash</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table">
                             <thead>
@@ -31,13 +32,13 @@
                                     <th>Bird ID</th>
                                     <th>Specie</th>
                                     <th>Sample Type</th>
-                                    <th>Gender Result</th>
-                                    <!-- <th>Quality</th> -->
-                                    <th>Action</th>
+                                    <th>Quality</th>
+                                    <th>DNA Result</th>
+                                    <th>Reported Date</th>
                                 </tr>
                             </thead>
                             <div class="tbody">
-                                <?php get_tested_samples(); ?>
+                                <?php dna_detail(); ?>
                                 <!-- <tr>
                                     <td>1</td>
                                     <td>#23A34</td>

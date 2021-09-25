@@ -1,5 +1,6 @@
 <?php require_once 'resources/config.php';
- extract(get_sample_data()); ?>
+ extract(get_sample_data());
+ ?>
 <html>
 	<head>
 		<title>Sample Card</title>
@@ -11,9 +12,9 @@
 	<body>
 		<nobr>
 			<nowrap>
-				<div class="pos" id="_0:0" style="top:0">
+				<!-- <div class="pos" id="_0:0" style="top:0">
 					<img name="_1100:850" src="assets/images/card_page.jpg" height="1100" width="850" border="0" usemap="#Map">
-				</div>
+				</div> -->
 				<div class="pos" id="_682:76" style="top:76;left:682">
 					<span id="_15.0" style=" font-family:Arial; font-size:15.0px; color:#000000">
 					    <?php echo $dna_id?>
@@ -26,7 +27,7 @@
 				</div>
 				<div class="pos" id="_170:174" style="top:174;left:170">
 					<span id="_13.5" style=" font-family:Arial; font-size:13.5px; color:#000000">
-                    <?php echo $name?>
+                    <?php echo $owner_name?>
                     </span>
 				</div>
 				<div class="pos" id="_170:200" style="top:200;left:170">

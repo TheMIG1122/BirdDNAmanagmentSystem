@@ -9,14 +9,10 @@ function genrate_html(bird_id) {
        <input type="text" name="specie[]" class="form-control" required placeholder="Bird Specie">
    </td>
    <td>
-       <input type="text" name="type[]" class="form-control" required placeholder="Sample Type">
-   </td>
-   <td>
-       <select name="quality[]" class="form-control select_quality" required>
-           <option value="" hidden>Select Quality</option>
-           <option value="0">A</option>
-           <option value="1">B</option>
-       </select>
+    <select name="type[]" class="form-control" required>
+        <option value="Feather">Feather</option>
+        <option value="Blood">Blood</option>
+    </select>
    </td>
    <td>
        <button class="btn btn-success border-0 add-sample-rows" type="button"><i class="flaticon-plus"></i></button>
@@ -45,16 +41,16 @@ function quality_value(index) {
 
 function calculate_total(){
     var total = 0;
-    $(".select_quality").each(function(){
-        var selected_quality = $(this).val();
-        var quality_amount = (selected_quality == "") ? 0 : quality_value(selected_quality) ;
-        total = total + quality_amount;
-    });
+    var quality_amount = quality_value($(".select_quality").val());
+    var samples_rows = $("#add-samples-box tr").length;
+    total = quality_amount*samples_rows;
+
+    // });
     var discount = ($("#discount_value").val() != "") ? $("#discount_value").val() : 0 ;
     discount = get_percentage(discount,total);
 
-    $("#discount_amount").html(discount)
-    $('#discount-val').val(discount);
+    $("#discount_amount").html(discount.toFixed(0))
+    $('#discount-val').val(discount.toFixed(0));
 
     $("#amount_div").html(total);
     $('#amount-val').val(total);
@@ -74,6 +70,9 @@ $(document).ready(function(){
     // Add more sample Rows
     $(document).on('click','.add-sample-rows',function(){
         $("#add-samples-box").append(genrate_html(birdID(8)));
+        var row_count = $("#add-samples-box tr").length;
+        $("#quantity-val").val(row_count);
+        calculate_total();
     });
 
    //  Adding Unique Bird ID
@@ -83,6 +82,8 @@ $(document).ready(function(){
     $(document).on('click','.delete-sample-row', function(){
         const element = $(this);
         element.parent().parent().remove();
+        var row_count = $("#add-samples-box tr").length;
+        $("#quantity-val").val(row_count);
     });
 
    //  Show Owner's Details
@@ -90,6 +91,10 @@ $(document).ready(function(){
       const elem = $(this);
       $('#owner-name-div').html(elem.attr('data-name'));
       $('#owner-phone-div').html(elem.attr('data-phone'));
+      $('#dna-quality-div').html(elem.attr('data-quality'));
+      $('#quantity-div').html(elem.attr('data-quantity'));
+      $('#payment-type-div').html(elem.attr('data-payment_status'));
+      $('#total-amount-div').html(elem.attr('data-total'));
       $("#OwnerInfo").modal('show');
    });
    
@@ -100,7 +105,6 @@ $(document).ready(function(){
             calculate_total();
        }
 
-       console.log(parseInt(discount_value))
        if( parseInt(discount_value) > 49) {
             $(this).css("border-color","red");
        } else {
@@ -118,5 +122,36 @@ $(document).ready(function(){
         var sample_id = $(this).attr('data-sampleID');
         $('#sample_id').val(sample_id);
         $("#AddResult").modal("show");
+   });
+
+   // Validate Phone Number
+   $("#phone-number-value").keyup(function(){
+       var phone_number_value = $(this).val();
+       phone_regex = /\d{11}/
+       if(!phone_regex.test(phone_number_value)){
+            $(this).css("border-color","red");
+            $("#submit-button").prop("disabled",true);
+       } else {
+            $(this).css("border-color","#e9ecef");
+            $("#submit-button").prop("disabled",false);
+       }
+   });
+   
+   // Pay Cash
+   $('.pay-cash').click(function() {
+       var dna_id_for_cash = $(this).attr('data-dnaID');
+       var dna_cash_amount = $(this).attr('data-cashAmount');
+       swal({
+            title: "Are you sure?",
+            text: "You received cash?",
+            icon: "warning",
+            buttons: ["NO", "Yes!"],
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location.href = 'index.php?page=credit_detail&dna_id='+dna_id_for_cash+'';
+            }
+      });
    });
 });

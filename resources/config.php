@@ -19,11 +19,11 @@ $var = array(
 if ($var['global']['mode'] == "test") {
     defined('DB_USER') ? null : define('DB_USER','root' );
     defined('DB_PASS') ? null : define('DB_PASS', '' );
-    defined('DB_NAME') ? null : define('DB_NAME', 'tech_roar_bird_dna_management' );
+    defined('DB_NAME') ? null : define('DB_NAME', 'tech_roar_bird_dna_managementv2' );
 } else {
     defined('DB_USER') ? null : define('DB_USER','root' );
     defined('DB_PASS') ? null : define('DB_PASS', '' );
-    defined('DB_NAME') ? null : define('DB_NAME', 'tech_roar_bird_dna_management' );
+    defined('DB_NAME') ? null : define('DB_NAME', 'tech_roar_bird_dna_managementv2' );
 }
 
 

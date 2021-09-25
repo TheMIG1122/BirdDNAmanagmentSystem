@@ -49,6 +49,18 @@
         <p>
             <b>Owner Phone : </b> <span id="owner-phone-div"></span>
         </p>
+        <p>
+            <b>Quality : </b> <span id="dna-quality-div"></span>
+        </p>
+        <p>
+            <b>Sample Quantity : </b> <span id="quantity-div"></span>
+        </p>
+        <p>
+            <b>Payment Type : </b> <span id="payment-type-div"></span>
+        </p>
+        <p>
+            <b>Total Amount : </b> <span id="total-amount-div"></span> Rs
+        </p>
       </div>
     </div>
   </div>

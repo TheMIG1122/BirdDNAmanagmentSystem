@@ -1,4 +1,4 @@
-<?php update_sample_result(); ?>
+<?php pay_cash(); ?>
 
 <div class="page-wrapper">
 	<div class="page-breadcrumb">
@@ -9,7 +9,7 @@
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="#">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Pending</li>
+							<li class="breadcrumb-item active" aria-current="page">Credit Detail</li>
 						</ol>
 					</nav>
 				</div>
@@ -30,15 +30,16 @@
                             <thead>
                                 <tr>
                                     <th>Sr</th>
-                                    <th>Bird ID</th>
-                                    <th>Specie</th>
-                                    <th>Sample Type</th>
-                                    <th>Payment Status</th>
+                                    <th>Owner Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Sample Qty</th>
+                                    <th>Amount</th>
+                                    <th>Received Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="tbody">
-                                <?php get_pending_samples(); ?>
+                                <?php pending_credit(); ?>
                                 <!-- <tr>
                                     <td>1</td>
                                     <td>#23A34</td>
