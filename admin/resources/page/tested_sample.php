@@ -32,7 +32,8 @@
                                     <th>Specie</th>
                                     <th>Sample Type</th>
                                     <th>Gender Result</th>
-                                    <!-- <th>Quality</th> -->
+                                    <th>Quality</th>
+                                    <th>Payment Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

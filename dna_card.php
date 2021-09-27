@@ -7,14 +7,28 @@
 		<style type="text/css">
 			body { font-family: Arial; font-size: 20.4px }
 			.pos { position: absolute; z-index: 0; left: 0px; top: 0px }
+			img {
+    width: 790px;
+    position: absolute;
+    top: -32px;
+    left: -26px;
+}
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
 		</style>
 	</head>
 	<body>
 		<nobr>
 			<nowrap>
-				<!-- <div class="pos" id="_0:0" style="top:0">
-					<img name="_1100:850" src="assets/images/card_page.jpg" height="1100" width="850" border="0" usemap="#Map">
-				</div> -->
+				<div class="pos no-print" id="_0:0" style="top:0">
+					<img name="_1100:850" src="assets/images/card/01.jpg" border="0" usemap="#Map">
+				</div>
 				<div class="pos" id="_682:76" style="top: 25px;left: 615;">
 					<span id="_15.0" style=" font-family:Arial; font-size:15.0px; color:#000000">
 					    <?php echo $dna_id?>

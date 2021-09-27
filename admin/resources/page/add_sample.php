@@ -33,19 +33,19 @@
                             <div class="col-12">
                                 <h4 class="alert alert-info text-center">Basic Info</h4>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Owner Name</label>
                                     <input type="text" name="name" class="form-control" placeholder="Name" required>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                 <label>Phone Number</label>
-                                    <input type="text" name="phone" max class="form-control" placeholder="Number" id="phone-number-value" maxlength="11" required title="Please enter 11 digit number">
+                                    <input type="text" name="phone" class="form-control" placeholder="Number" id="phone-number-value" maxlength="11" required title="Please enter 11 digit number">
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Quality</label>
                                     <select name="quality" class="form-control select_quality" required>
@@ -54,13 +54,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label>Discount (%)</label>
-                                    <input type="number" min="0" max="50" class="form-control" placeholder="Discount" id="discount_value" required>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Payment Status</label>
                                     <select name="payment_status" class="form-control" required>
@@ -69,8 +63,21 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Extra Amount</label>
+                                    <input type="number" max="50" class="form-control" placeholder="Amount" name='extra_amount' id="extra_amount_value">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Discount (%)</label>
+                                    <input type="number" max="50" class="form-control" placeholder="Discount" id="discount_value">
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <p><b>Amount : <span id="amount_div">500</span> Rs </b>
+                                <br><b>Extra Amount : <span id="extra_amount_div">0</span> Rs </b>
                                 <br><b>Discount amount : <span id="discount_amount">0</span> Rs </b>
                                 <br><b>Total payable amount : <span id="total_amount">500</span> Rs </b></p>
                             </div>
@@ -91,7 +98,7 @@
                                             <th>Bird ID</th>
                                             <th>Bird Specie</th>
                                             <th>Sample Type</th>
-                                            <th></th>
+                                            <th style=""></th>
                                         </tr>
                                     </thead>
                                     <tbody id="add-samples-box">
@@ -109,13 +116,15 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <button class="btn btn-success border-0 add-sample-rows" type="button" id="add-sample-rows"><i class="flaticon-plus"></i></button>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        <p class="text-center">
+                            <button class="btn btn-success border-0 add-sample-rows" type="button" id="add-sample-rows"><i class="flaticon-plus"></i></button>
+                        </p>
                         <div class="add-more-btn-div">
                             <button class="btn btn-info border-0 w-100" id="submit-button" name="add_sample">Add Sample</button>
                         </div>

@@ -23,6 +23,7 @@
         <div class="col-md-12 col-xl-12">
             <div class="card p-4">
                 <div class="card-body">
+                    <?php echo get_owner_details($_GET['dna_id']); ?><br>
                     <a href="#" class='btn btn-success border-0 pay-cash mb-3' data-dnaid='<?php echo $_GET['dna_id']?>' data-cashamount='<?php echo $_GET['cashamount']?>'>Pay Cash</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table">

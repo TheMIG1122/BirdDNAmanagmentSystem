@@ -34,6 +34,7 @@
                                     <th>Specie</th>
                                     <th>Sample Type</th>
                                     <th>Payment Status</th>
+                                    <th>Dates</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

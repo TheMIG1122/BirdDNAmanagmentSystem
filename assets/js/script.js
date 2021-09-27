@@ -15,8 +15,8 @@ function genrate_html(bird_id) {
     </select>
    </td>
    <td>
-       <button class="btn btn-success border-0 add-sample-rows" type="button"><i class="flaticon-plus"></i></button>
-        <button class="btn btn-danger border-0 delete-sample-row" type="button"><i class="flaticon-garbage"></i></button>
+       <!--- <button class="btn btn-success border-0 add-sample-rows" type="button"><i class="flaticon-plus"></i></button> --->
+        <button class="btn btn-danger border-0 delete-sample-row" type="button"><i class="flaticon-cancel"></i></button>
    </td>
 </tr>
 `;
@@ -47,6 +47,7 @@ function calculate_total(){
 
     // });
     var discount = ($("#discount_value").val() != "") ? $("#discount_value").val() : 0 ;
+    var extra_amount = ($("#extra_amount_value").val() != "") ? parseInt($("#extra_amount_value").val()) : 0 ;
     discount = get_percentage(discount,total);
 
     $("#discount_amount").html(discount.toFixed(0))
@@ -55,8 +56,10 @@ function calculate_total(){
     $("#amount_div").html(total);
     $('#amount-val').val(total);
 
-    $("#total_amount").html((total-discount));
-    $('#total-val').val(total-discount);
+    $( '#extra_amount_div' ).html(extra_amount);
+
+    $("#total_amount").html(((total+extra_amount)-discount));
+    $('#total-val').val((total+extra_amount)-discount);
 }
 
 function get_percentage(discount_value,total_value) {
@@ -112,6 +115,17 @@ $(document).ready(function(){
        }
    });
    
+   // Adding Extra Amount
+   $("#extra_amount_value").keyup(function(){
+        var discount_value = $( this ).val();
+        if( discount_value != '') {
+            $( '#extra_amount_div' ).html( discount_value );
+            calculate_total();
+        } else {
+            $( '#extra_amount_div' ).html(0);
+        }
+    });
+   
    // Get Total Amount
    $(document).on('change','.select_quality',function(){
         calculate_total();
@@ -125,16 +139,24 @@ $(document).ready(function(){
    });
 
    // Validate Phone Number
-   $("#phone-number-value").keyup(function(){
-       var phone_number_value = $(this).val();
-       phone_regex = /\d{11}/
-       if(!phone_regex.test(phone_number_value)){
-            $(this).css("border-color","red");
-            $("#submit-button").prop("disabled",true);
-       } else {
-            $(this).css("border-color","#e9ecef");
-            $("#submit-button").prop("disabled",false);
-       }
+   $("#phone-number-value").keyup(function(event){
+    var key = event.charCode || event.keyCode;
+    // console.log(event);
+    event.preventDefault();
+    if (key == 32) {
+        var phonevalue = $("#phone-number-value").val();
+        $("#phone-number-value").val(phonevalue.slice(0, -1));
+    } else {
+        var phone_number_value = $(this).val();
+        phone_regex = /\d{11}/
+        if(!phone_regex.test(phone_number_value)){
+             $(this).css("border-color","red");
+             $("#submit-button").prop("disabled",true);
+        } else {
+             $(this).css("border-color","#e9ecef");
+             $("#submit-button").prop("disabled",false);
+        }
+    }
    });
    
    // Pay Cash
