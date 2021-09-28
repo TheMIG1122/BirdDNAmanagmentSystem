@@ -7,10 +7,10 @@
 		<style type="text/css">
 			body { font-family: Arial; font-size: 20.4px }
 			.pos { position: absolute; z-index: 0; left: 0px; top: 0px }
-			img {
+img {
     width: 790px;
     position: absolute;
-    top: -32px;
+    top: -28px;
     left: -26px;
 }
 
@@ -20,14 +20,32 @@
     {
         display: none !important;
     }
+
+	#download-image {
+		display: none !important;
+	}
+}
+
+#download-image {
+    color: #fff;
+    background-color: #36bea6;
+    border-color: #36bea6;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    margin: 20px 0 0;
+    display: block;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
 }
 		</style>
 	</head>
 	<body>
-		<nobr>
+		<div id="main" style="position: relative;width: 760px;height: 317px;">
 			<nowrap>
-				<div class="pos no-print" id="_0:0" style="top:0">
-					<img name="_1100:850" src="assets/images/card/01.jpg" border="0" usemap="#Map">
+				<div class="pos no-print" id="main1" style="top:0">
+					<img name="_1100:850" src="assets/images/card/final.png" border="0" usemap="#Map">
 				</div>
 				<div class="pos" id="_682:76" style="top: 25px;left: 615;">
 					<span id="_15.0" style=" font-family:Arial; font-size:15.0px; color:#000000">
@@ -70,6 +88,25 @@
                     </span>
 				</div>
 			</nowrap>
-		</nobr>
+</div>
+<a href="" download id="download-image" class="download-button">Download</a>
+		<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/html2canvas/html2canvas.js"></script>
+    <script src="assets/libs/jspdf/jspdf.min.js"></script>
+<script>
+function genImg() {
+    html2canvas($('#main'), {
+        onrendered: function(canvas) {
+            var img = canvas.toDataURL("image/png");
+			$("#download-image").attr("href",img);
+			$("#download-image").trigger('click');
+        }
+    });
+}
+
+$(document).ready(function() {
+    genImg();
+});
+</script>
 	</body>
 </html>

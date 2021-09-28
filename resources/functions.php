@@ -617,13 +617,13 @@ function get_samples_pdf()
 			$result = create_gender_div($result);
 			$row = <<<DELIMETER
 			<tr class="sample-row">
-				<td>{$sr}</td>
-				<td colspan="2">{$specie}</td>
-				<td colspan="2">{$bird_id}</td>
-				<td>{$dna_id}</td>
-				<td>{$result}</td>
-				<td>{$received_date}</td>
-				<td>{$reported_date}</td>
+				<td style="padding: 10px;height: 30px;border-right: 2px solid #000;">{$sr}</td>
+				<td style="padding: 10px;height: 30px;border-right: 2px solid #000;width: 40px;">{$specie}</td>
+				<td colspan="2" style="padding: 10px;height: 30px;border-right: 2px solid;">{$bird_id}</td>
+				<td colspan="2" style="padding: 10px;height: 30px;border-right: 2px solid;">{$dna_id}</td>
+				<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$result}</td>
+				<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$received_date}</td>
+				<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$reported_date}</td>
 			</tr>
 			DELIMETER;
 			echo $row;
