@@ -176,7 +176,7 @@ function genPDF() {
             var doc = new jsPDF();
             doc.addImage(img, 'JPEG', 10, 10, 232, 0);
             // doc.addImage(img, 'JPEG', 10, 10, 199, 300);
-            doc.save('test.pdf');
+            doc.save('<?php echo $owner_name; ?> (DNA ID. <?php echo $dna_id?>).pdf');
         }
     });
 }
