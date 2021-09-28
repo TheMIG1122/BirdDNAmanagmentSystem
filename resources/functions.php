@@ -414,7 +414,7 @@ function get_tested_samples()
 }
 
 
-function get_search_samples()
+function get_search_samples($search = "")
 {
 	global $var;
 	global $samples;
@@ -435,7 +435,11 @@ function get_search_samples()
 	$query = query($sql);
 	confirm($query);
 	$count = num_rows($query);
-	
+	$folder = "";
+	if ($search == '') {
+		$folder = "../";
+	}
+
 	$sr = 1;
 	if ($count > 0) {
 		while ( $data = fetch_array($query) ) {
@@ -456,7 +460,7 @@ function get_search_samples()
 						<b>Discount</b> : {$discount} Rs <br>
 						<b>Total</b> : {$total} Rs
 						<br>
-						<a href="../dna_pdf.php?dna_id={$id}" target="_blank" class="btn btn-success">Download as PDF</a>
+						<a href="{$folder}dna_pdf.php?dna_id={$id}" target="_blank" class="btn btn-success">Download as PDF</a>
 					</p>
 				</td>
 				DELIMETER;
@@ -469,7 +473,7 @@ function get_search_samples()
 				extract($sample);
 				$card_btn = "<span class='text-danger'>Pending</span>";
 				if ($result != "") {
-					$card_btn = '<a href="../dna_card.php?sample_id='.$data['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$owner_phone.'">Print Card</a>';
+					$card_btn = '<a href="'.$folder.'dna_card.php?sample_id='.$data['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$owner_phone.'">Print Card</a>';
 				}
 				if ($result == "") {
 					$result = "<span class='text-danger'>Pending</span>";
