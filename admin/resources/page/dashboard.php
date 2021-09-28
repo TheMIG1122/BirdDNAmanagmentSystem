@@ -55,7 +55,7 @@
             <div class="card bg-c-blue order-card">
                 <div class="card-block">
                     <h4 class="m-b-20">Pending Paymentss</h4>
-                    <h2 class="text-right custom-icon"><img src="../assets/images/icons/samplesW.png" alt=""><span><?php echo count_row('dna_samples','')?></span></h2>
+                    <h2 class="text-right custom-icon"><img src="../assets/images/icons/money.png" alt=""><span><?php echo count_total('owners',"WHERE payment_status = 'Credit'","total");?> Rs</span></h2>
                     <p class="m-b-0"><a href="index.php?page=search_sample">Expore More <span class="fas fa-angle-right"></span></a></p>
                 </div>
             </div>

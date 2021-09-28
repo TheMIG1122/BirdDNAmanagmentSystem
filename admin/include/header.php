@@ -12,7 +12,7 @@
 	<meta name="author" content="">
 	<!-- Favicon icon -->
 	<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/dna.png">
-	<title>Bird DNA | Admin Panel</title>
+	<title>Quality DNA | Admin Panel</title>
 	<!-- Custom CSS -->
 	<script src='../assets/js/sweetalert.js'></script>
 	<script src='../assets/js/alerts.js'></script>

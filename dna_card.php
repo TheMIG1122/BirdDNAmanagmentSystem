@@ -21,21 +21,22 @@ img {
         display: none !important;
     }
 
-	#download-image {
+	.download-button {
 		display: none !important;
 	}
 }
 
-#download-image {
+.download-button {
     color: #fff;
     background-color: #36bea6;
     border-color: #36bea6;
     border: 1px solid transparent;
     padding: 0.375rem 0.75rem;
     font-size: 0.875rem;
-    margin: 20px 0 0;
+    margin: 20px 10 0;
     display: block;
     width: 100px;
+	float:left;
     text-align: center;
     text-decoration: none;
 }
@@ -49,7 +50,7 @@ img {
 				</div>
 				<div class="pos" id="_682:76" style="top: 25px;left: 615;">
 					<span id="_15.0" style=" font-family:Arial; font-size:15.0px; color:#000000">
-					    <?php echo $dna_id?>
+					    <?php echo $id?>
                     </span>
 				</div>
 				<div class="pos" id="_170:148" style="top: 101px;left: 130px;">
@@ -90,6 +91,7 @@ img {
 			</nowrap>
 </div>
 <a href="" download id="download-image" class="download-button">Download</a>
+<a href="#" id="print-image" class="download-button">Print</a>
 		<script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="assets/libs/html2canvas/html2canvas.js"></script>
     <script src="assets/libs/jspdf/jspdf.min.js"></script>
@@ -106,6 +108,9 @@ function genImg() {
 
 $(document).ready(function() {
     genImg();
+	$('#print-image').click(function(){
+		window.print();
+	});
 });
 </script>
 	</body>

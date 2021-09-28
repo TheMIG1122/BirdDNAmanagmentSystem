@@ -2,7 +2,7 @@
 	<nav class="navbar top-navbar navbar-expand-md navbar-dark">
 		<div class="navbar-header" data-logobg="skin5">
 			<a class="navbar-brand" href="../index.php">
-				<img src="../assets/images/dna.png" alt="homepage" class="light-logo dashboard-logo" style="max-width: 50px; width: 100%;" /> <span class="pl-2">Bird DNA</span>
+				<img src="../assets/images/logo.png" alt="homepage" class="light-logo dashboard-logo" style="max-width: 180px; width: 100%;" />
 			</a>
 			<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="flaticon-cancel"></i></a>
 		</div>

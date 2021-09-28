@@ -4,7 +4,7 @@
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">
 			<div class="col-5">
-				<h4 class="page-title">Pending Samples</h4>
+				<h4 class="page-title">Credit Detail</h4>
 				<div class="d-flex align-items-center">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
@@ -25,6 +25,7 @@
         <div class="col-md-12 col-xl-12">
             <div class="card p-4">
                 <div class="card-body">
+                    <p><b>Total Amount </b>: <?php echo count_total('owners',"WHERE payment_status = 'Credit'","total");?> Rs</p>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table">
                             <thead>

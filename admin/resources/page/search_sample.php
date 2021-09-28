@@ -28,41 +28,28 @@
                         <h4 class="alert alert-info text-center">Search Record</h4>
                     </div>
                     <div class="col-12">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <form action="#" method="POST">
-                                    <input type="hidden" name="type" value="owner">
+                        <form action="#" method="POST">
+                            <div class="row">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Search Throug Owner Phone Number</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="basic-addon2" required value="<?php echo (isset($_POST['phone'])) ? $_POST['phone'] : '' ; ?>" name="phone">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="submit" name="search_sample">Search</button>
-                                            </div>
-                                        </div>
+                                        <label>Search By Owner Phone Number</label>
+                                        <input type="text" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="basic-addon2" required value="<?php echo (isset($_POST['phone'])) ? $_POST['phone'] : '' ; ?>" name="phone">
                                     </div>
-                                </form>
-                            </div>
-                            <div class="col-md-4">
-                                <form action="#" method="POST">
-                                <input type="hidden" name="type" value="dna">
-                                    <div class="form-group">
-                                        <label>Search Throug DNA ID</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="basic-addon2" required value="<?php echo (isset($_POST['dna'])) ? $_POST['dna'] : '' ; ?>" name="dna">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="submit" name="search_sample">Search</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- <div class="col-md-4">
-                                <div class="form-group">
-                                    <button class="btn btn-success" style="margin-top:28px" type="button">Download as PDF</button>
                                 </div>
-                            </div> -->
-                        </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Search By DNA ID</label>
+                                        <input type="text" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="basic-addon2" value="<?php echo (isset($_POST['dna'])) ? $_POST['dna'] : '' ; ?>" name="dna">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label style='opacity : 0'>.</label>
+                                        <button class="btn btn-success form-control" name='search_sample'>Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 

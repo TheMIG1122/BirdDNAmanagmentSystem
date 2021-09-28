@@ -1,5 +1,5 @@
             <footer class="footer text-center">
-                All Rights Reserved by Vital Educators Admin.
+            © Copyright 2021 | All Rights Reserved.
             </footer>
         </div>
     </div>

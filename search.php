@@ -1,141 +1,96 @@
 <?php require_once 'resources/config.php'; ?>
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- Tell the browser to be responsive to screen width -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/dna.png">
-	<title>Bird DNA | Admin Panel</title>
-	<!-- Custom CSS -->
-	<script src='assets/js/sweetalert.js'></script>
-	<script src='assets/js/alerts.js'></script>
-	<link href="assets/libs/flaticon/flaticon.css" rel="stylesheet">
-	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-	<!-- Custom CSS -->
-	<link href="assets/css/style.min.css" rel="stylesheet">
-	<link href="assets/css/custom.css" rel="stylesheet">
-	<style>
-		html {
-			scroll-behavior: smooth;
-		}
-		@media (min-width: 992px){
-			.container {
-				max-width: 1130px;
-				width: 100% !important;
-			}
-		}
-		.page-breadcrumb {
-			padding: 20px;
-		}
-		.order-card {
-			color: #fff;
-		}
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-		.bg-c-blue {
-			background: linear-gradient(45deg,#4099ff,#73b4ff);
-		}
+  <title>Quality DNA Lab</title>
+  <meta content="" name="description">
 
-		.bg-c-green {
-			background: linear-gradient(45deg,#2ed8b6,#59e0c5);
-		}
+  <meta content="" name="keywords">
 
-		.bg-c-yellow {
-			background: linear-gradient(45deg,#FFB64D,#ffcb80);
-		}
+  <!-- Favicons -->
+  <link href="assets/images/dna.png" rel="icon">
 
-		.bg-c-pink {
-			background: linear-gradient(45deg,#FF5370,#ff869a);
-		}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
+  <link href="front_assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="front_assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="front_assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="front_assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="front_assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="front_assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
-		.card {
-			border-radius: 5px;
-			-webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-			box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-			border: none;
-			margin-bottom: 30px;
-			-webkit-transition: all 0.3s ease-in-out;
-			transition: all 0.3s ease-in-out;
-		}
+  <!-- Template Main CSS File -->
+  <link href="front_assets/css/style.css" rel="stylesheet">
 
-		.card .card-block {
-			padding: 25px;
-		}
-
-		.order-card i {
-			font-size: 26px;
-		}
-
-		.f-left {
-			float: left;
-		}
-
-		.f-right {
-			float: right;
-		}
-		.card-block a {
-			font-size: 16px;
-			color: #fff !important;
-		}
-		a {
-		cursor: pointer !important;
-	}
-	</style>
+  <!-- =======================================================
+  * Template Name: FlexStart - v1.6.0
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top bg-white">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.php" class="logo d-flex align-items-center">
+        <img src="assets/images/logo.png" alt="">
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+			<li><a class="nav-link scrollto" href="index.php#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="index.php#about">About</a></li>
+          <li><a class="nav-link scrollto" href="index.php#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="search.php">Search</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
 	<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
     <div class="conrainer">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-10 mt-5">
             <div class="card p-4 mt-5">
                 <div class="row">
                     <div class="col-12">
                         <h4 class="alert alert-info text-center">Search Record</h4>
                     </div>
                     <div class="col-12">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <form action="#" method="POST">
-                                    <input type="hidden" name="type" value="owner">
+                        <form action="#" method="POST">
+                            <div class="row">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Search Throug Owner Phone Number</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="basic-addon2" required value="<?php echo (isset($_POST['phone'])) ? $_POST['phone'] : '' ; ?>" name="phone">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="submit" name="search_sample">Search</button>
-                                            </div>
-                                        </div>
+                                        <label>Search By Owner Phone Number</label>
+                                        <input type="text" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="basic-addon2" required value="<?php echo (isset($_POST['phone'])) ? $_POST['phone'] : '' ; ?>" name="phone">
                                     </div>
-                                </form>
-                            </div>
-                            <div class="col-md-4">
-                                <form action="#" method="POST">
-                                <input type="hidden" name="type" value="dna">
-                                    <div class="form-group">
-                                        <label>Search Throug DNA ID</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="basic-addon2" required value="<?php echo (isset($_POST['dna'])) ? $_POST['dna'] : '' ; ?>" name="dna">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="submit" name="search_sample">Search</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- <div class="col-md-4">
-                                <div class="form-group">
-                                    <button class="btn btn-success" style="margin-top:28px" type="button">Download as PDF</button>
                                 </div>
-                            </div> -->
-                        </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Search By DNA ID</label>
+                                        <input type="text" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="basic-addon2" value="<?php echo (isset($_POST['dna'])) ? $_POST['dna'] : '' ; ?>" name="dna">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label style='opacity : 0'>.</label>
+                                        <button class="btn btn-success form-control" name='search_sample'>Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -151,7 +106,6 @@
                                         <th>Specie</th>
                                         <th>Sample Type</th>
                                         <th>Gender Result</th>
-                                        <th>Quality</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

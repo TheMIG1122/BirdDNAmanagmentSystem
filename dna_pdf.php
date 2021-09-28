@@ -1,7 +1,7 @@
 <?php require_once 'resources/config.php' ;
 
 $dna_id = $_GET['dna_id'];
-$dna = get_record( 'dna',"WHERE id = {$dna_id}" );
+$dna = get_record( 'owners',"WHERE id = {$dna_id}" );
 extract($dna);
 ?>
 <!DOCTYPE html>
