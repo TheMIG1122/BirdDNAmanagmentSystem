@@ -218,7 +218,7 @@ function genrate_payment_div($payment_status)
 	if ( $payment_status == "Cash" ) {
 		$div = '<span class="text-success">Paid</span>';
 	} else if ( $payment_status == "Credit" ) {
-		$div = '<span class="text-danger">Pending</span>';
+		$div = '<span class="text-danger">Not Paid</span>';
 	} else {
 		$div = '<span class="text-danger">--</span>';
 	}
@@ -363,7 +363,7 @@ function get_pending_samples()
 			<td>{$specie}</td>
 			<td>{$type}</td>
 			<td>{$payment_status}</td>
-			<td><b>Recived Date : </b>{$received_date} <br> <b>Reported Date : </b>{$reported_date}</td>
+			<td><b>Received Date : </b>{$received_date} <br> <b>Reported Date : </b>{$reported_date}</td>
 			<td class="text-center">
 				<a href="#" class="btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total}">Owner Detail</a> 
 				<a href="#" class="btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}">Add Result</a>

@@ -31,7 +31,7 @@
                     <input type="hidden" name="quantity" id="quantity-val" class="form-control" value="1">
                         <div class="row">
                             <div class="col-12">
-                                <h4 class="alert alert-info text-center">Basic Info</h4>
+                                <h4 class="alert alert-info text-center">Customer Info</h4>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
