@@ -12,6 +12,10 @@ DNA record managment system
 
 * 0.1
     * Initial Phase
+* 0.2
+    * FrontEnd Phase
+* 0.3
+    * BackEnd Phase
 
 ## What we use?
 
