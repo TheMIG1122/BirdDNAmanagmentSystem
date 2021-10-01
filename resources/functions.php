@@ -440,7 +440,7 @@ function get_search_samples($search = "")
 	extract($_POST);
 	// $sql .= "SELECT dna.owner_name,dna.owner_phone,dna.quality,dna.extra_amount,dna.id AS owner_id,dna.amount,dna.discount,dna.total,dna_samples.*,dna_samples.id AS sample_id ";
 	$sql .= "SELECT * FROM owners ";
-	$sql .= "WHERE owner_phone = '{$phone}'";
+	$sql .= "WHERE owner_phone = '{$phone}' ORDER BY id DESC";
 
 
 	$query = query($sql);
@@ -705,9 +705,14 @@ function get_total_bar_search() {
 
 		$query = query($sql);
 		confirm($query);
+		$count = num_rows($query);
 		$data = fetch_array($query);
-		$data['Total'] = ($data['Total'] == "") ? 0 : $data['Total'];
-		return "<b>Total Amount</b> : ". $data['Total'] ." Rs | <b>Total Samples</b> : ".$data['Samples']; 
+		if ($data['Total'] != "") {
+			$data['Total'] = ($data['Total'] == "") ? 0 : $data['Total'];
+			return "<b>Total Amount</b> : ". $data['Total'] ." Rs | <b>Total Samples</b> : ".$data['Samples']; 
+		} else {
+			return "";
+		}
 	}
 }
 
@@ -718,7 +723,8 @@ function get_owner_details_search()
 		$sql = "SELECT * FROM owners WHERE owner_phone = '{$phone}'";
 		$query = query($sql);
 		confirm($query);
+		$count = num_rows($query);
 		$data = fetch_array($query);
-		return "<b> Owner Name: </b> {$data['owner_name']} | <b> Owner Phone : </b> {$data['owner_phone']} ";
+		return ($count > 0) ? "<b> Owner Name: </b> {$data['owner_name']} | <b> Owner Phone : </b> {$data['owner_phone']} " : "" ;
 	}
 }
