@@ -365,20 +365,20 @@ function get_pending_samples()
 		$quality = "<b>{$var['add_sample']['quality_text'][$owner['quality']]}</b>";
 		$received_date = convert_date($data['created_at']);
 		$reported_date = convert_date($data['updated_at']);
-		$row = <<<DELIMETER
-		<tr>
-			<td>{$sr}</td>
-			<td>{$bird_id}</td>
-			<td>{$specie}</td>
-			<td>{$type}</td>
-			<td>{$payment_status}</td>
-			<td><b>Received Date : </b>{$received_date} <br> <b>Reported Date : </b>{$reported_date}</td>
-			<td class="text-center">
-				<a href="#" class="btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total}">Owner Detail</a> 
-				<a href="#" class="btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}">Add Result</a>
-			</td>
-		</tr>
-		DELIMETER;
+$row = <<<DELIMETER
+<tr>
+	<td>{$sr}</td>
+	<td>{$bird_id}</td>
+	<td>{$specie}</td>
+	<td>{$type}</td>
+	<td>{$payment_status}</td>
+	<td><b>Received Date : </b>{$received_date} <br> <b>Reported Date : </b>{$reported_date}</td>
+	<td class="text-center">
+		<a href="#" class="btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total}">Owner Detail</a> 
+		<a href="#" class="btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}">Add Result</a>
+	</td>
+</tr>
+DELIMETER;
 		echo $row;
 		$sr++;
 	}
@@ -402,21 +402,21 @@ function get_tested_samples()
 		$result = create_gender_div($result);
 		$payment_div = genrate_payment_div($payment_status);
 
-		$row = <<<DELIMETER
-		<tr>
-			<td>{$sr}</td>
-			<td>{$bird_id}</td>
-			<td>{$specie}</td>
-			<td>{$type}</td>
-			<td>{$result}</td>
-			<td><b>{$var['add_sample']['quality_text'][$quality]}</b></td>
-			<td>{$payment_div}</td>
-			<td class="text-center">
-			<a href="#" class="btn-sm btn-info border-0 show-owner-detail d-block" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$var['add_sample']['quality_text'][$quality]}" data-quantity="{$quantity}" data-payment_status="{$payment_status}" data-total="{$total}">Owner Detail</a>
-				{$card_btn}
-			</td>
-		</tr>
-		DELIMETER;
+$row = <<<DELIMETER
+<tr>
+	<td>{$sr}</td>
+	<td>{$bird_id}</td>
+	<td>{$specie}</td>
+	<td>{$type}</td>
+	<td>{$result}</td>
+	<td><b>{$var['add_sample']['quality_text'][$quality]}</b></td>
+	<td>{$payment_div}</td>
+	<td class="text-center">
+	<a href="#" class="btn-sm btn-info border-0 show-owner-detail d-block" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$var['add_sample']['quality_text'][$quality]}" data-quantity="{$quantity}" data-payment_status="{$payment_status}" data-total="{$total}">Owner Detail</a>
+		{$card_btn}
+	</td>
+</tr>
+DELIMETER;
 		echo $row;
 		$sr++;
 	}
@@ -449,26 +449,28 @@ function get_search_samples($search = "")
 			extract($data);
 			$sample_sql = "SELECT * FROM dna_samples WHERE dna_id = {$id}";
 			if($dna != "") {
-				$sample_sql .= " AND id = {$dna}";
+				$sample_sql .= " AND bird_id = '{$dna}'";
 			}
+			// echo $sample_sql;
+			// exit();
 			$sample_query = query($sample_sql);
 			confirm($sample_query);
 			$temp_count = num_rows($sample_query);
 			$rowspan = '';
-			$rowspan = <<<DELIMETER
-			<td rowspan="{$temp_count}">
-				<p class='text-left'>
-					<b>{$owner_name}</b>
-					<br>{$owner_phone}<br>
-					<b>Amount</b> : {$amount} Rs <br>
-					<b>Extra Amount</b> : {$extra_amount} Rs <br>
-					<b>Discount</b> : {$discount} Rs <br>
-					<b>Total</b> : {$total} Rs
-					<br>
-					<a href="{$folder}dna_pdf.php?dna_id={$id}" target="_blank" class="btn btn-success">Download as PDF</a>
-				</p>
-			</td>
-			DELIMETER;
+$rowspan = <<<DELIMETER
+<td rowspan="{$temp_count}">
+	<p class='text-left'>
+		<b>{$owner_name}</b>
+		<br>{$owner_phone}<br>
+		<b>Amount</b> : {$amount} Rs <br>
+		<b>Extra Amount</b> : {$extra_amount} Rs <br>
+		<b>Discount</b> : {$discount} Rs <br>
+		<b>Total</b> : {$total} Rs
+		<br>
+		<a href="{$folder}dna_pdf.php?dna_id={$id}" target="_blank" class="btn btn-success">Download as PDF</a>
+	</p>
+</td>
+DELIMETER;
 			
 			// echo $rowspan;
 
@@ -491,20 +493,20 @@ function get_search_samples($search = "")
 					$quality_div = "<td><b>{$var['add_sample']['quality_text'][$quality]}</b></td>";
 				}
 				$rowspan = ($row_count == 1) ? $rowspan : '' ;
-				$row = <<<DELIMETER
-				<tr>
-					<td>{$row_count}</td>
-					{$rowspan}
-					<td>{$bird_id}</td>
-					<td>{$specie}</td>
-					<td>{$type}</td> 
-					<td>{$result}</td>
-					{$quality_div}
-					<td class="text-center">
-						{$card_btn}
-					</td>
-				</tr>
-				DELIMETER;
+$row = <<<DELIMETER
+<tr>
+	<td>{$row_count}</td>
+	{$rowspan}
+	<td>{$bird_id}</td>
+	<td>{$specie}</td>
+	<td>{$type}</td> 
+	<td>{$result}</td>
+	{$quality_div}
+	<td class="text-center">
+		{$card_btn}
+	</td>
+</tr>
+DELIMETER;
 				echo $row;
 				$row_count++;
 			}
@@ -527,20 +529,20 @@ function pending_credit()
 	while ( $data = fetch_array($query) ) {
 		extract($data);
 		$date = convert_date($created_at);
-		$row = <<<DELIMETER
-		<tr>
-			<td>{$sr}</td>
-			<td>{$owner_name}</td>
-			<td>{$owner_phone}</td>
-			<td>{$quantity}</td>
-			<td>{$total} Rs</td>
-			<td>{$date}</td>
-			<td class="text-center">
-				<a href="#" class="btn-sm btn-success border-0 pay-cash" data-dnaID="{$id}" data-cashAmount="{$total}">Pay Cash</a>
-				<a href="index.php?page=dna_detail&dna_id={$id}&cashamount={$total}&quality={$quality}" class="btn-sm btn-info border-0">Detail</a>
-			</td>
-		</tr>
-		DELIMETER;
+$row = <<<DELIMETER
+<tr>
+	<td>{$sr}</td>
+	<td>{$owner_name}</td>
+	<td>{$owner_phone}</td>
+	<td>{$quantity}</td>
+	<td>{$total} Rs</td>
+	<td>{$date}</td>
+	<td class="text-center">
+		<a href="#" class="btn-sm btn-success border-0 pay-cash" data-dnaID="{$id}" data-cashAmount="{$total}">Pay Cash</a>
+		<a href="index.php?page=dna_detail&dna_id={$id}&cashamount={$total}&quality={$quality}" class="btn-sm btn-info border-0">Detail</a>
+	</td>
+</tr>
+DELIMETER;
 		echo $row;
 		$sr++;
 	}
@@ -588,17 +590,17 @@ function dna_detail()
 		extract($data);
 		$date = convert_date($created_at);
 		$result = create_gender_div($result);
-		$row = <<<DELIMETER
-		<tr>
-			<td>{$sr}</td>
-			<td>{$bird_id}</td>
-			<td>{$type}</td>
-			<td>{$specie}</td>
-			<td>{$var['add_sample']['quality_text'][$quality]}</td>
-			<td>{$result}</td>
-			<td>{$date}</td>
-		</tr>
-		DELIMETER;
+$row = <<<DELIMETER
+<tr>
+	<td>{$sr}</td>
+	<td>{$bird_id}</td>
+	<td>{$type}</td>
+	<td>{$specie}</td>
+	<td>{$var['add_sample']['quality_text'][$quality]}</td>
+	<td>{$result}</td>
+	<td>{$date}</td>
+</tr>
+DELIMETER;
 		echo $row;
 		$sr++;
 	}
@@ -628,17 +630,17 @@ function get_samples_pdf()
 			$received_date = convert_date($created_at);
 			$reported_date = convert_date($updated_at);
 			$result = create_gender_div($result);
-			$row = <<<DELIMETER
-			<tr class="sample-row">
-				<td style="padding: 10px;height: 30px;border-right: 2px solid #000;">{$sr}</td>
-				<td style="padding: 10px;height: 30px;border-right: 2px solid #000;width: 40px;">{$specie}</td>
-				<td colspan="2" style="padding: 10px;height: 30px;border-right: 2px solid;">{$bird_id}</td>
-				<td colspan="2" style="padding: 10px;height: 30px;border-right: 2px solid;">{$id}</td>
-				<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$result}</td>
-				<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$received_date}</td>
-				<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$reported_date}</td>
-			</tr>
-			DELIMETER;
+$row = <<<DELIMETER
+<tr class="sample-row">
+	<td style="padding: 10px;height: 30px;border-right: 2px solid #000;">{$sr}</td>
+	<td style="padding: 10px;height: 30px;border-right: 2px solid #000;width: 40px;">{$specie}</td>
+	<td colspan="2" style="padding: 10px;height: 30px;border-right: 2px solid;">{$bird_id}</td>
+	<td colspan="2" style="padding: 10px;height: 30px;border-right: 2px solid;">{$id}</td>
+	<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$result}</td>
+	<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$received_date}</td>
+	<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$reported_date}</td>
+</tr>
+DELIMETER;
 			echo $row;
 			$sr++;
 		}
