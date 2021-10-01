@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2021 at 09:01 PM
+-- Generation Time: Oct 01, 2021 at 09:48 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dna_samples` (
   `id` int(11) NOT NULL,
-  `dna_id` varchar(11) NOT NULL DEFAULT '0',
+  `owner_id` varchar(11) NOT NULL DEFAULT '0',
   `bird_id` varchar(250) DEFAULT NULL,
   `specie` varchar(250) DEFAULT NULL,
   `type` varchar(250) DEFAULT NULL,
