@@ -318,7 +318,7 @@ function add_sample()
 			'discount' => $discount,
 			'total' => $total
 		);
-		$dna_id = insert_data_return('owners',$data);
+		$owner_id = insert_data_return('owners',$data);
 		$count = count($bird_id);
 
 		for ( $i=0; $i<$count; $i++ ) {
@@ -326,7 +326,7 @@ function add_sample()
 				'bird_id' => $bird_id[$i],
 				'specie' => $specie[$i],
 				'type' => $type[$i],
-				'dna_id' => $dna_id
+				'owner_id' => $owner_id
 			);
 			insert_data('dna_samples',$data);
 		}
@@ -353,13 +353,13 @@ function update_sample_result()
 function get_pending_samples()
 {
 	global $var;
-	$sql = "SELECT * FROM dna_samples WHERE status = 0";
+	$sql = "SELECT * FROM dna_samples WHERE status = 0 ORDER BY id DESC";
 	$query = query($sql);
 	confirm($query);
 	$sr = 1;
 	while ( $data = fetch_array($query) ) {
 		extract($data);
-		$owner = get_record( 'owners',"WHERE id = {$dna_id}" );
+		$owner = get_record( 'owners',"WHERE id = {$owner_id}" );
 		extract($owner);
 		$payment_status = genrate_payment_div($payment_status);
 		$quality = "<b>{$var['add_sample']['quality_text'][$owner['quality']]}</b>";
@@ -372,7 +372,7 @@ $row = <<<DELIMETER
 	<td>{$specie}</td>
 	<td>{$type}</td>
 	<td>{$payment_status}</td>
-	<td><b>Received Date : </b>{$received_date} <br> <b>Reported Date : </b>{$reported_date}</td>
+	<td>{$received_date}</td>
 	<td class="text-center">
 		<a href="#" class="btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total}">Owner Detail</a> 
 		<a href="#" class="btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}">Add Result</a>
@@ -387,13 +387,17 @@ DELIMETER;
 function get_tested_samples()
 {
 	global $var;
-	$sql = "SELECT * FROM dna_samples WHERE status =  1";
+	if (isset($_GET['type'])) {
+		$sql = "SELECT * FROM dna_samples WHERE result = '{$_GET['type']}' ORDER BY updated_at DESC";
+	} else {
+		$sql = "SELECT * FROM dna_samples WHERE status =  1 ORDER BY updated_at DESC";
+	}
 	$query = query($sql);
 	confirm($query);
 	$sr = 1;
 	while ( $data = fetch_array($query) ) {
 		extract($data);
-		$owner = get_record( 'owners',"WHERE id = {$dna_id}" );
+		$owner = get_record( 'owners',"WHERE id = {$owner_id}" );
 		extract($owner);
 		$card_btn = "<span class='text-danger'>Pending</span>";
 		if ($result != "") {
@@ -401,7 +405,9 @@ function get_tested_samples()
 		}
 		$result = create_gender_div($result);
 		$payment_div = genrate_payment_div($payment_status);
-
+		$received_date = convert_date($data['created_at']);
+		$reported_date = convert_date($data['updated_at']);
+		$dates = "<b>Received Date</b><br>".$received_date." <b><br>Reported Date</b><br>".$reported_date;
 $row = <<<DELIMETER
 <tr>
 	<td>{$sr}</td>
@@ -411,6 +417,7 @@ $row = <<<DELIMETER
 	<td>{$result}</td>
 	<td><b>{$var['add_sample']['quality_text'][$quality]}</b></td>
 	<td>{$payment_div}</td>
+	<td>{$dates}</td>
 	<td class="text-center">
 	<a href="#" class="btn-sm btn-info border-0 show-owner-detail d-block" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$var['add_sample']['quality_text'][$quality]}" data-quantity="{$quantity}" data-payment_status="{$payment_status}" data-total="{$total}">Owner Detail</a>
 		{$card_btn}
@@ -429,8 +436,9 @@ function get_search_samples($search = "")
 	global $samples;
 	$samples_div = "";
 	$sql = '';
+	$main_count = 0;
 	extract($_POST);
-	// $sql .= "SELECT dna.owner_name,dna.owner_phone,dna.quality,dna.extra_amount,dna.id AS dna_id,dna.amount,dna.discount,dna.total,dna_samples.*,dna_samples.id AS sample_id ";
+	// $sql .= "SELECT dna.owner_name,dna.owner_phone,dna.quality,dna.extra_amount,dna.id AS owner_id,dna.amount,dna.discount,dna.total,dna_samples.*,dna_samples.id AS sample_id ";
 	$sql .= "SELECT * FROM owners ";
 	$sql .= "WHERE owner_phone = '{$phone}'";
 
@@ -447,9 +455,15 @@ function get_search_samples($search = "")
 	if ($count > 0) {
 		while ( $data = fetch_array($query) ) {
 			extract($data);
-			$sample_sql = "SELECT * FROM dna_samples WHERE dna_id = {$id}";
+			$sample_sql = "SELECT * FROM dna_samples WHERE owner_id = {$id}";
 			if($dna != "") {
 				$sample_sql .= " AND bird_id = '{$dna}'";
+			}
+
+			if($search == 'true' && $payment_status == 'Credit') {
+				$pdf_btn = '';
+			} else {
+				$pdf_btn = '<a href="{$folder}dna_pdf.php?owner_id='.$id.'" target="_blank" class="btn btn-success">Download as PDF</a>';
 			}
 			// echo $sample_sql;
 			// exit();
@@ -460,14 +474,12 @@ function get_search_samples($search = "")
 $rowspan = <<<DELIMETER
 <td rowspan="{$temp_count}">
 	<p class='text-left'>
-		<b>{$owner_name}</b>
-		<br>{$owner_phone}<br>
 		<b>Amount</b> : {$amount} Rs <br>
 		<b>Extra Amount</b> : {$extra_amount} Rs <br>
 		<b>Discount</b> : {$discount} Rs <br>
 		<b>Total</b> : {$total} Rs
 		<br>
-		<a href="{$folder}dna_pdf.php?dna_id={$id}" target="_blank" class="btn btn-success">Download as PDF</a>
+		{$pdf_btn}
 	</p>
 </td>
 DELIMETER;
@@ -475,46 +487,71 @@ DELIMETER;
 			// echo $rowspan;
 
 			$row_count = 1;
-			while ($sample = fetch_array($sample_query)) {
-				extract($sample);
-				$card_btn = "<span class='text-danger'>Pending</span>";
-				if ($result != "") {
-					$card_btn = '<a href="'.$folder.'dna_card.php?sample_id='.$sample['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$owner_phone.'">Print Card</a>';
-				}
-				if ($result == "") {
-					$result = "<span class='text-danger'>Pending</span>";
-					$data['result'] = $result;
-				} else {
-					$result = create_gender_div($result);
-				}
-
-				$quality_div = "";
-				if ($search == "") {
-					$quality_div = "<td><b>{$var['add_sample']['quality_text'][$quality]}</b></td>";
-				}
-				$rowspan = ($row_count == 1) ? $rowspan : '' ;
-$row = <<<DELIMETER
-<tr>
-	<td>{$row_count}</td>
-	{$rowspan}
-	<td>{$bird_id}</td>
-	<td>{$specie}</td>
-	<td>{$type}</td> 
-	<td>{$result}</td>
-	{$quality_div}
-	<td class="text-center">
-		{$card_btn}
-	</td>
-</tr>
-DELIMETER;
-				echo $row;
-				$row_count++;
+			if ($temp_count > 0) {
+				$main_count = 1;
 			}
+				while ($sample = fetch_array($sample_query)) {
+					extract($sample);
+					$card_btn = "<span class='text-danger'>N/A</span>";
+					if ($result != "") {
+						$card_btn = '<a href="'.$folder.'dna_card.php?sample_id='.$sample['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$owner_phone.'">Print Card</a>';
+					}
+					if ($search == "true") {
+						$card_btn = '<a href="'.$folder.'dna_card.php?sample_id='.$sample['id'].'&print=false" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$owner_phone.'">View Card</a>';
+					}
+					if ($result == "") {
+						$result = "<span class='text-danger'>Pending</span>";
+						$data['result'] = $result;
+						$card_btn = "<span class='text-danger'>N/A</span>";
+					} else {
+						$result = create_gender_div($result);
+					}
+	
+					$quality_div = "";
+					if ($search == "") {
+						$quality_div = "<td><b>{$var['add_sample']['quality_text'][$quality]}</b></td>";						
+					} else {
+						if ($data['payment_status'] == 'Credit') {
+							$result = "<span class='text-danger'>Payment Pending</span>";
+							$card_btn = "<span class='text-danger'>N/A</span>";
+						}
+					}
+					$received_date = convert_date($sample['created_at']);
+					$reported_date = convert_date($sample['updated_at']);
+					if ($sample['result'] == "") {
+						$reported_date = "<span class='text-danger'>Pending</span>";
+					}
+					$dates = "<b>Received Date</b><br>".$received_date." <b><br>Reported Date</b><br>".$reported_date;
+					$rowspan = ($row_count == 1) ? $rowspan : '' ;
+					$row = <<<DELIMETER
+					<tr>
+						<td>{$row_count}</td>
+						{$rowspan}
+						<td>{$bird_id}</td>
+						<td>{$specie}</td>
+						<td>{$type}</td> 
+						<td>{$result}</td>
+						{$quality_div}
+						<td>{$dates}</td>
+						<td class="text-center">
+							{$card_btn}
+						</td>
+					</tr>
+					DELIMETER;
+					echo $row;
+					$row_count++;
+				}
+			// } else {
+				// echo "<tr><td colspan='8'><p class='text-center text-danger'>No Record Found.</p></td><tr/>";
+			// }
 		}
 	} else {
+		$main_count = 0;
+	}
+
+	if ($main_count == 0) {
 		echo "<tr><td colspan='8'><p class='text-center text-danger'>No Record Found.</p></td><tr/>";
 	}
-	return $samples_div;
 }
 
 // Pending Credit
@@ -522,7 +559,7 @@ DELIMETER;
 function pending_credit()
 {
 	global $var;
-	$sql = "SELECT * FROM owners WHERE payment_status =  'Credit'";
+	$sql = "SELECT * FROM owners WHERE payment_status =  'Credit' ORDER BY id DESC";
 	$query = query($sql);
 	confirm($query);
 	$sr = 1;
@@ -538,8 +575,8 @@ $row = <<<DELIMETER
 	<td>{$total} Rs</td>
 	<td>{$date}</td>
 	<td class="text-center">
-		<a href="#" class="btn-sm btn-success border-0 pay-cash" data-dnaID="{$id}" data-cashAmount="{$total}">Pay Cash</a>
-		<a href="index.php?page=dna_detail&dna_id={$id}&cashamount={$total}&quality={$quality}" class="btn-sm btn-info border-0">Detail</a>
+		<a href="#" class="btn-sm btn-success border-0 pay-cash" data-OwnerID="{$id}" data-cashAmount="{$total}">Pay Cash</a>
+		<a href="index.php?page=dna_detail&owner_id={$id}&cashamount={$total}&quality={$quality}" class="btn-sm btn-info border-0">Detail</a>
 	</td>
 </tr>
 DELIMETER;
@@ -556,7 +593,7 @@ function get_sample_data()
 	$sql = '';
 	$sql .= "SELECT owners.*,dna_samples.* ";
 	$sql .= " FROM dna_samples ";
-	$sql .= " JOIN owners ON dna_samples.dna_id=owners.id ";
+	$sql .= " JOIN owners ON dna_samples.owner_id=owners.id ";
 	$sql .= " WHERE dna_samples.id = ".$sample_id." ";
 	$query = query($sql);
 	$data = fetch_array($query);
@@ -565,8 +602,8 @@ function get_sample_data()
 
 function pay_cash()
 {
-	if (isset($_GET['dna_id'])) {
-		$id = $_GET['dna_id'];
+	if (isset($_GET['owner_id'])) {
+		$id = $_GET['owner_id'];
 		$data = array (
 			'payment_status' => 'Cash'
 		);
@@ -580,9 +617,9 @@ function pay_cash()
 function dna_detail()
 {
 	global $var;
-	$id = $_GET['dna_id'];
+	$id = $_GET['owner_id'];
 	$quality = $_GET['quality'];
-	$sql = "SELECT * FROM dna_samples WHERE dna_id =  {$id}";
+	$sql = "SELECT * FROM dna_samples WHERE owner_id =  {$id}";
 	$query = query($sql);
 	confirm($query);
 	$sr = 1;
@@ -607,9 +644,9 @@ DELIMETER;
 }
 
 // Show Owner Detail
-function get_owner_details($dna_id)
+function get_owner_details($owner_id)
 {
-	$sql = "SELECT * FROM owners WHERE id = {$dna_id}";
+	$sql = "SELECT * FROM owners WHERE id = {$owner_id}";
 	$query = query($sql);
 	confirm($query);
 	$data = fetch_array($query);
@@ -620,11 +657,17 @@ function get_owner_details($dna_id)
 
 function get_samples_pdf()
 {
-	if (isset($_GET['dna_id'])) {
-		$sql = "SELECT * FROM dna_samples WHERE dna_id = {$_GET['dna_id']}";
+	if (isset($_GET['owner_id'])) {
+		$sql = "SELECT * FROM dna_samples WHERE owner_id = {$_GET['owner_id']}";
 		$query = query($sql);
 		confirm($query);
+		$count = num_rows($query);
 		$sr = 1;
+		if ($count > 15) {
+			$style = "padding: 0 10px;height: 10px;";
+		} else {
+			$style = "padding: 10px;height: 30px;";
+		}
 		while ( $data = fetch_array($query) ) {
 			extract($data);
 			$received_date = convert_date($created_at);
@@ -632,17 +675,50 @@ function get_samples_pdf()
 			$result = create_gender_div($result);
 $row = <<<DELIMETER
 <tr class="sample-row">
-	<td style="padding: 10px;height: 30px;border-right: 2px solid #000;">{$sr}</td>
-	<td style="padding: 10px;height: 30px;border-right: 2px solid #000;width: 40px;">{$specie}</td>
-	<td colspan="2" style="padding: 10px;height: 30px;border-right: 2px solid;">{$bird_id}</td>
-	<td colspan="2" style="padding: 10px;height: 30px;border-right: 2px solid;">{$id}</td>
-	<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$result}</td>
-	<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$received_date}</td>
-	<td style="padding: 10px;height: 30px;border-right: 2px solid;">{$reported_date}</td>
+	<td style="{$style}border-right: 2px solid #000;">{$sr}</td>
+	<td style="{$style}border-right: 2px solid #000;width: 40px;">{$specie}</td>
+	<td colspan="2" style="{$style}border-right: 2px solid;">{$bird_id}</td>
+	<td colspan="2" style="{$style}border-right: 2px solid;">{$id}</td>
+	<td style="{$style}border-right: 2px solid;">{$result}</td>
+	<td style="{$style}border-right: 2px solid;">{$received_date}</td>
+	<td style="{$style}border-right: 2px solid;">{$reported_date}</td>
 </tr>
 DELIMETER;
 			echo $row;
 			$sr++;
 		}
+	}
+}
+
+function get_total_bar_search() {
+	if (isset($_POST['search_sample'])) {
+		extract($_POST);
+		if ($dna != "") {
+			$sql = "";
+			$sql .= "SELECT owners.total AS Total, COUNT(*) AS Samples FROM owners,dna_samples ";
+			$sql .= " WHERE dna_samples.owner_id = owners.id AND dna_samples.bird_id = '{$dna}' AND owners.owner_phone = '{$phone}'";
+		} else {
+			$sql = "";
+			$sql .= "SELECT SUM(total) AS Total,SUM(quantity) AS Samples FROM owners ";
+			$sql .= "WHERE owner_phone = '{$phone}'";
+		}
+
+		$query = query($sql);
+		confirm($query);
+		$data = fetch_array($query);
+		$data['Total'] = ($data['Total'] == "") ? 0 : $data['Total'];
+		return "<b>Total Amount</b> : ". $data['Total'] ." Rs | <b>Total Samples</b> : ".$data['Samples']; 
+	}
+}
+
+function get_owner_details_search()
+{
+	if (isset($_POST['search_sample'])) {
+		$phone = $_POST['phone'];
+		$sql = "SELECT * FROM owners WHERE owner_phone = '{$phone}'";
+		$query = query($sql);
+		confirm($query);
+		$data = fetch_array($query);
+		return "<b> Owner Name: </b> {$data['owner_name']} | <b> Owner Phone : </b> {$data['owner_phone']} ";
 	}
 }

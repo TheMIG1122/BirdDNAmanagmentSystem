@@ -3,7 +3,7 @@
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">
 			<div class="col-5">
-				<h4 class="page-title">Tested Samples</h4>
+				<h4 class="page-title">Search Samples</h4>
 				<div class="d-flex align-items-center">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Search By DNA ID</label>
+                                        <label>Search By Bird ID</label>
                                         <input type="text" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="basic-addon2" value="<?php echo (isset($_POST['dna'])) ? $_POST['dna'] : '' ; ?>" name="dna">
                                     </div>
                                 </div>
@@ -50,6 +50,9 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    <div class="col-12">
+                        <p><?php echo get_owner_details_search(); ?><br><?php echo get_total_bar_search();?></p>
                     </div>
                 </div>
 
@@ -66,6 +69,7 @@
                                         <th>Sample Type</th>
                                         <th>Gender Result</th>
                                         <th>Quality</th>
+                                        <th>Dates</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

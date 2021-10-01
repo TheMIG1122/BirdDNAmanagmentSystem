@@ -2,7 +2,7 @@
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">
 			<div class="col-5">
-				<h4 class="page-title">DNA Detail</h4>
+				<h4 class="page-title">Credit Detail</h4>
 				<div class="d-flex align-items-center">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
@@ -23,8 +23,8 @@
         <div class="col-md-12 col-xl-12">
             <div class="card p-4">
                 <div class="card-body">
-                    <?php echo get_owner_details($_GET['dna_id']); ?><br>
-                    <a href="#" class='btn btn-success border-0 pay-cash mb-3' data-dnaid='<?php echo $_GET['dna_id']?>' data-cashamount='<?php echo $_GET['cashamount']?>'>Pay Cash</a>
+                    <?php echo get_owner_details($_GET['owner_id']); ?><br>
+                    <a href="#" class='btn btn-success border-0 pay-cash mb-3' data-ownerid='<?php echo $_GET['owner_id']?>' data-cashamount='<?php echo $_GET['cashamount']?>'>Pay Cash</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table">
                             <thead>

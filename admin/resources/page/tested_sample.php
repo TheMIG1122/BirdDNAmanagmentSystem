@@ -34,39 +34,12 @@
                                     <th>Gender Result</th>
                                     <th>Quality</th>
                                     <th>Payment Status</th>
+                                    <th style="width:100px">Dates</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <div class="tbody">
                                 <?php get_tested_samples(); ?>
-                                <!-- <tr>
-                                    <td>1</td>
-                                    <td>#23A34</td>
-                                    <td>Green Fisher</td>
-                                    <td>Feather</td>
-                                    <td>
-                                        <span class="gender-result male">
-                                            <i class="fas fa-mars"></i> Male
-                                        </span>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn-sm btn-info border-0">Owner Detail</a> 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>#23A34</td>
-                                    <td>Green Fisher</td>
-                                    <td>Feather</td>
-                                    <td>
-                                        <span class="gender-result female">
-                                        <i class="fas fa-venus"></i> Fe-Male
-                                        </span>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn-sm btn-info border-0">Owner Detail</a> 
-                                    </td>
-                                </tr> -->
                             </div>
                         </table>
                     </div>

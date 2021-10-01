@@ -3,7 +3,7 @@ function genrate_html(bird_id) {
    return `
 <tr>
    <td>
-       <input type="text" name="bird_id[]" class="form-control bird-id-val" required placeholder="Bird ID" value="`+bird_id+`">
+       <input type="text" name="bird_id[]" class="form-control bird-id-val" required placeholder="Bird ID">
    </td>
    <td>
        <input type="text" name="specie[]" class="form-control" required placeholder="Bird Specie">
@@ -87,6 +87,7 @@ $(document).ready(function(){
         element.parent().parent().remove();
         var row_count = $("#add-samples-box tr").length;
         $("#quantity-val").val(row_count);
+        calculate_total();
     });
 
    //  Show Owner's Details
@@ -114,9 +115,30 @@ $(document).ready(function(){
             $(this).css("border-color","#e9ecef");
        }
    });
+   $("#discount_value").change(function(){
+        var discount_value = $(this).val();
+        if( discount_value != '' && parseInt(discount_value) < 50) {
+            calculate_total();
+        }
+
+        if( parseInt(discount_value) > 49) {
+            $(this).css("border-color","red");
+        } else {
+            $(this).css("border-color","#e9ecef");
+        }
+    });
    
    // Adding Extra Amount
    $("#extra_amount_value").keyup(function(){
+        var discount_value = $( this ).val();
+        if( discount_value != '') {
+            $( '#extra_amount_div' ).html( discount_value );
+            calculate_total();
+        } else {
+            $( '#extra_amount_div' ).html(0);
+        }
+    });
+    $("#extra_amount_value").change(function(){
         var discount_value = $( this ).val();
         if( discount_value != '') {
             $( '#extra_amount_div' ).html( discount_value );
@@ -158,11 +180,30 @@ $(document).ready(function(){
         }
     }
    });
+   $("#phone-number-value").change(function(event){
+    var key = event.charCode || event.keyCode;
+    // console.log(event);
+    event.preventDefault();
+    if (key == 32) {
+        var phonevalue = $("#phone-number-value").val();
+        $("#phone-number-value").val(phonevalue.slice(0, -1));
+    } else {
+        var phone_number_value = $(this).val();
+        phone_regex = /\d{11}/
+        if(!phone_regex.test(phone_number_value)){
+             $(this).css("border-color","red");
+             $("#submit-button").prop("disabled",true);
+        } else {
+             $(this).css("border-color","#e9ecef");
+             $("#submit-button").prop("disabled",false);
+        }
+    }
+   });
    
    // Pay Cash
    $('.pay-cash').click(function() {
-       var dna_id_for_cash = $(this).attr('data-dnaID');
-       var dna_cash_amount = $(this).attr('data-cashAmount');
+       var owner_id_for_cash = $(this).attr('data-ownerID');
+       var owner_cash_amount = $(this).attr('data-cashAmount');
        swal({
             title: "Are you sure?",
             text: "You received cash?",
@@ -172,7 +213,7 @@ $(document).ready(function(){
         })
         .then((willDelete) => {
             if (willDelete) {
-                window.location.href = 'index.php?page=credit_detail&dna_id='+dna_id_for_cash+'';
+                window.location.href = 'index.php?page=credit_detail&owner_id='+owner_id_for_cash+'';
             }
       });
    });

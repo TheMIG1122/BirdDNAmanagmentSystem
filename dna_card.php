@@ -91,7 +91,9 @@ img {
 			</nowrap>
 </div>
 <a href="" download id="download-image" class="download-button">Download</a>
-<a href="#" id="print-image" class="download-button">Print</a>
+<?php if (!isset($_GET['print'])) { ?>
+	<a href="#" id="print-image" class="download-button">Print</a>
+<?php } ?>
 		<script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="assets/libs/html2canvas/html2canvas.js"></script>
     <script src="assets/libs/jspdf/jspdf.min.js"></script>

@@ -66,7 +66,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Extra Amount</label>
-                                    <input type="number" max="50" class="form-control" placeholder="Amount" name='extra_amount' id="extra_amount_value">
+                                    <input type="number" class="form-control" placeholder="Amount" name='extra_amount' id="extra_amount_value">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -77,7 +77,7 @@
                             </div>
                             <div class="col-12">
                                 <p><b>Amount : <span id="amount_div">500</span> Rs </b>
-                                <br><b>Extra Amount : <span id="extra_amount_div">0</span> Rs </b>
+                                <br><b>Extra amount : <span id="extra_amount_div">0</span> Rs </b>
                                 <br><b>Discount amount : <span id="discount_amount">0</span> Rs </b>
                                 <br><b>Total payable amount : <span id="total_amount">500</span> Rs </b></p>
                             </div>
@@ -104,7 +104,7 @@
                                     <tbody id="add-samples-box">
                                         <tr>
                                             <td>
-                                                <input type="text" name="bird_id[]" class="form-control bird-id-val" required placeholder="Bird ID">
+                                                <input type="text" name="bird_id[]" class="form-control bird-id-val-t" required placeholder="Bird ID">
                                             </td>
                                             <td>
                                                 <input type="text" name="specie[]" class="form-control" required placeholder="Bird Specie">

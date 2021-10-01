@@ -56,7 +56,7 @@
                 <div class="card-block">
                     <h4 class="m-b-20">Pending Paymentss</h4>
                     <h2 class="text-right custom-icon"><img src="../assets/images/icons/money.png" alt=""><span><?php echo count_total('owners',"WHERE payment_status = 'Credit'","total");?> Rs</span></h2>
-                    <p class="m-b-0"><a href="index.php?page=search_sample">Expore More <span class="fas fa-angle-right"></span></a></p>
+                    <p class="m-b-0"><a href="index.php?page=credit_detail">Expore More <span class="fas fa-angle-right"></span></a></p>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                 <div class="card-block">
                     <h4 class="m-b-20">Fe-Male</h4>
                     <h2 class="text-right custom-icon"><img src="../assets/images/icons/femaleW.png" alt=""><span><?php echo count_row('dna_samples','WHERE result="Fe-Male"')?></span></h2>
-                    <p class="m-b-0"><a href="index.php?page=search_sample">Expore More <span class="fas fa-angle-right"></span></a></p>
+                    <p class="m-b-0"><a href="index.php?page=tested_sample&type=Fe-Male">Expore More <span class="fas fa-angle-right"></span></a></p>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
                 <div class="card-block">
                     <h4 class="m-b-20">Male</h4>
                     <h2 class="text-right custom-icon"><img src="../assets/images/icons/maleW.png" alt=""><span><?php echo count_row('dna_samples','WHERE result="Male"')?></span></h2>
-                    <p class="m-b-0"><a href="index.php?page=search_sample">Expore More <span class="fas fa-angle-right"></span></a></p>
+                    <p class="m-b-0"><a href="index.php?page=tested_sample&type=Male">Expore More <span class="fas fa-angle-right"></span></a></p>
                 </div>
             </div>
         </div>

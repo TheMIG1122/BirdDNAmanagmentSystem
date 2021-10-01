@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Search By DNA ID</label>
+                                        <label>Search By Bird ID</label>
                                         <input type="text" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="basic-addon2" value="<?php echo (isset($_POST['dna'])) ? $_POST['dna'] : '' ; ?>" name="dna">
                                     </div>
                                 </div>
@@ -91,6 +91,9 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    <div class="col-12">
+                        <p class='mt-4'><?php echo get_owner_details_search(); ?><br><?php echo get_total_bar_search();?></p>
                     </div>
                 </div>
 
@@ -106,6 +109,7 @@
                                         <th>Specie</th>
                                         <th>Sample Type</th>
                                         <th>Gender Result</th>
+                                        <th>Dates</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
