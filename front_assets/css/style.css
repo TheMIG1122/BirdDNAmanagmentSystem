@@ -165,7 +165,7 @@ section {
   line-height: 0;
 }
 .header .logo img {
-  max-height: 40px;
+  max-height: 90px;
   margin-right: 6px;
 }
 .header .logo span {
@@ -1122,7 +1122,7 @@ section {
   margin: 40px 30px;
   box-shadow: 0px 0 20px rgba(1, 41, 112, 0.1);
   background: #fff;
-  min-height: 320px;
+  min-height: 180px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -2033,4 +2033,7 @@ section {
   text-align: center;
   font-size: 13px;
   color: #012970;
+}
+table.table.table-bordered.middle-aligned td, table.table.table-bordered.middle-aligned th {
+    font-size: 14px;
 }

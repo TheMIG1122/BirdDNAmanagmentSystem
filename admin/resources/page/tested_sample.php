@@ -21,7 +21,7 @@
   <div class="container">
     <div class="row">
         <div class="col-md-12 col-xl-12">
-            <div class="card p-4">
+            <div class="card p-2">
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table">

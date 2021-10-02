@@ -374,8 +374,8 @@ $row = <<<DELIMETER
 	<td>{$payment_status}</td>
 	<td>{$received_date}</td>
 	<td class="text-center">
-		<a href="#" class="btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total}">Owner Detail</a> 
-		<a href="#" class="btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}">Add Result</a>
+		<a href="#" class="btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total}" style="display: inline-block;">Customer Detail</a> 
+		<a href="#" class="btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}" style="display: inline-block;">Add Result</a>
 	</td>
 </tr>
 DELIMETER;
@@ -407,7 +407,7 @@ function get_tested_samples()
 		$payment_div = genrate_payment_div($payment_status);
 		$received_date = convert_date($data['created_at']);
 		$reported_date = convert_date($data['updated_at']);
-		$dates = "<b>Received Date</b><br>".$received_date." <b><br>Reported Date</b><br>".$reported_date;
+		$dates = "<b>Received Date: </b>".$received_date." <b><br>Reported Date: </b>".$reported_date;
 $row = <<<DELIMETER
 <tr>
 	<td>{$sr}</td>
@@ -419,7 +419,7 @@ $row = <<<DELIMETER
 	<td>{$payment_div}</td>
 	<td>{$dates}</td>
 	<td class="text-center">
-	<a href="#" class="btn-sm btn-info border-0 show-owner-detail d-block" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$var['add_sample']['quality_text'][$quality]}" data-quantity="{$quantity}" data-payment_status="{$payment_status}" data-total="{$total}">Owner Detail</a>
+	<a href="#"  style="display: inline-block;" class="btn-sm btn-info border-0 show-owner-detail d-block" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$var['add_sample']['quality_text'][$quality]}" data-quantity="{$quantity}" data-payment_status="{$payment_status}" data-total="{$total}"  style="display: inline-block;">Customer Detail</a>
 		{$card_btn}
 	</td>
 </tr>
@@ -463,7 +463,7 @@ function get_search_samples($search = "")
 			if($search == 'true' && $payment_status == 'Credit') {
 				$pdf_btn = '';
 			} else {
-				$pdf_btn = '<a href="{$folder}dna_pdf.php?owner_id='.$id.'" target="_blank" class="btn btn-success">Download as PDF</a>';
+				$pdf_btn = '<a href="'.$folder.'dna_pdf.php?owner_id='.$id.'" target="_blank" class="btn btn-success">Download in PDF</a>';
 			}
 			// echo $sample_sql;
 			// exit();
@@ -521,23 +521,23 @@ DELIMETER;
 					if ($sample['result'] == "") {
 						$reported_date = "<span class='text-danger'>Pending</span>";
 					}
-					$dates = "<b>Received Date</b><br>".$received_date." <b><br>Reported Date</b><br>".$reported_date;
+					$dates = "<b>Received Date: </b> ".$received_date." <b><br>Reported Date: </b> ".$reported_date;
 					$rowspan = ($row_count == 1) ? $rowspan : '' ;
-					$row = <<<DELIMETER
-					<tr>
-						<td>{$row_count}</td>
-						{$rowspan}
-						<td>{$bird_id}</td>
-						<td>{$specie}</td>
-						<td>{$type}</td> 
-						<td>{$result}</td>
-						{$quality_div}
-						<td>{$dates}</td>
-						<td class="text-center">
-							{$card_btn}
-						</td>
-					</tr>
-					DELIMETER;
+$row = <<<DELIMETER
+<tr>
+	<td>{$row_count}</td>
+	{$rowspan}
+	<td>{$bird_id}</td>
+	<td>{$specie}</td>
+	<td>{$type}</td> 
+	<td>{$result}</td>
+	{$quality_div}
+	<td>{$dates}</td>
+	<td class="text-center">
+		{$card_btn}
+	</td>
+</tr>
+DELIMETER;
 					echo $row;
 					$row_count++;
 				}
@@ -575,8 +575,8 @@ $row = <<<DELIMETER
 	<td>{$total} Rs</td>
 	<td>{$date}</td>
 	<td class="text-center">
-		<a href="#" class="btn-sm btn-success border-0 pay-cash" data-OwnerID="{$id}" data-cashAmount="{$total}">Pay Cash</a>
-		<a href="index.php?page=dna_detail&owner_id={$id}&cashamount={$total}&quality={$quality}" class="btn-sm btn-info border-0">Detail</a>
+		<a href="#"  style="display: inline-block;" class="btn-sm btn-success border-0 pay-cash" data-OwnerID="{$id}" data-cashAmount="{$total}">Pay Cash</a>
+		<a target="_blank"  style="display: inline-block;" href="index.php?page=dna_detail&owner_id={$id}&cashamount={$total}&quality={$quality}" class="btn-sm btn-info border-0">Detail</a>
 	</td>
 </tr>
 DELIMETER;
@@ -650,7 +650,7 @@ function get_owner_details($owner_id)
 	$query = query($sql);
 	confirm($query);
 	$data = fetch_array($query);
-	return "<b> Owner Name: </b> {$data['owner_name']} | <b> Owner Phone : </b> {$data['owner_phone']} | <b> Total Amount : </b> {$data['total']} Rs";
+	return "<b> Customer Name: </b> {$data['owner_name']} | <b> Customer Phone : </b> {$data['owner_phone']} | <b> Total Amount : </b> {$data['total']} Rs";
 }
 
 // Show DNA For PDF
@@ -725,6 +725,6 @@ function get_owner_details_search()
 		confirm($query);
 		$count = num_rows($query);
 		$data = fetch_array($query);
-		return ($count > 0) ? "<b> Owner Name: </b> {$data['owner_name']} | <b> Owner Phone : </b> {$data['owner_phone']} " : "" ;
+		return ($count > 0) ? "<b> Customer Name: </b> {$data['owner_name']} | <b> Customer Phone : </b> {$data['owner_phone']} " : "" ;
 	}
 }

@@ -21,7 +21,7 @@
   <div class="container">
     <div class="row">
         <div class="col-md-12 col-xl-12">
-            <div class="card p-4">
+            <div class="card p-2">
                 <div class="card-body">
                     <?php echo get_owner_details($_GET['owner_id']); ?><br>
                     <a href="#" class='btn btn-success border-0 pay-cash mb-3' data-ownerid='<?php echo $_GET['owner_id']?>' data-cashamount='<?php echo $_GET['cashamount']?>'>Pay Cash</a>
@@ -35,7 +35,7 @@
                                     <th>Sample Type</th>
                                     <th>Quality</th>
                                     <th>DNA Result</th>
-                                    <th>Reported Date</th>
+                                    <th>Received Date</th>
                                 </tr>
                             </thead>
                             <div class="tbody">

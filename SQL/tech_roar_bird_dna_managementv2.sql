@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2021 at 09:53 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.14
+-- Generation Time: Oct 02, 2021 at 03:35 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,10 +34,10 @@ CREATE TABLE `dna_samples` (
   `bird_id` varchar(250) DEFAULT NULL,
   `specie` varchar(250) DEFAULT NULL,
   `type` varchar(250) DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT 0,
+  `status` int(11) NOT NULL DEFAULT '0',
   `result` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -52,11 +53,11 @@ CREATE TABLE `login_details` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `reset_hash` varchar(255) DEFAULT NULL,
-  `reset_status` int(11) NOT NULL DEFAULT 0,
-  `login_attempts` int(11) NOT NULL DEFAULT 0,
-  `ban_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `reset_status` int(11) NOT NULL DEFAULT '0',
+  `login_attempts` int(11) NOT NULL DEFAULT '0',
+  `ban_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -64,7 +65,7 @@ CREATE TABLE `login_details` (
 --
 
 INSERT INTO `login_details` (`id`, `name`, `username`, `email`, `password`, `reset_hash`, `reset_status`, `login_attempts`, `ban_time`, `status`, `created_at`) VALUES
-(1, 'TheIRF', 'admin', 'themig1122@gmail.com', '21232f297a57a5a743894a0e4a801fc3', NULL, 0, 0, '2021-09-22 14:28:40', 0, '2021-09-14 14:14:09');
+(1, 'Admin', 'admin', 'qualitydnalab@gmail.com', '0192023a7bbd73250516f069df18b500', NULL, 0, 0, '2021-10-02 01:35:01', 0, '2021-09-14 09:14:09');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,7 @@ CREATE TABLE `owners` (
   `extra_amount` varchar(11) NOT NULL DEFAULT '0',
   `discount` varchar(11) NOT NULL DEFAULT '0',
   `total` varchar(11) NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

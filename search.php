@@ -7,9 +7,11 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Quality DNA Lab</title>
-  <meta content="" name="description">
+  <meta name="description" content="Quality DNA Lab is Offering all Kind of Birds DNA services in affordable price. We are having Imported Equipment's for Birds DNA testing with 99.9% Accuracy of Results. Quality of Service is our First Priority.">
 
-  <meta content="" name="keywords">
+  <meta name="robots" content="no-index, no-follow" />
+
+  <meta content="Quality DNA Lab, Birds DNA, Birds DNA Lab, Quality, Ali Birds, Ali Birds Shop, Lahore DNA Lab, Bird DNA, Birds DNA Testing,Birds Sampling" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/images/dna.png" rel="icon">
@@ -73,7 +75,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Search By Owner Phone Number</label>
+                                        <label>Search By Customer Phone Number</label>
                                         <input type="text" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="basic-addon2" required value="<?php echo (isset($_POST['phone'])) ? $_POST['phone'] : '' ; ?>" name="phone">
                                     </div>
                                 </div>
@@ -105,7 +107,7 @@
                                     <tr>
                                         <th style="width:10px">Sr</th>
                                         <th>Basic Information</th>
-                                        <th>BirdID</th>
+                                        <th>Bird ID</th>
                                         <th>Specie</th>
                                         <th>Sample Type</th>
                                         <th>Gender Result</th>

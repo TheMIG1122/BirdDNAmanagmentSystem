@@ -22,7 +22,7 @@
   <div class="container">
     <div class="row">
         <div class="col-md-12 col-xl-12">
-            <div class="card p-4">
+            <div class="card p-2">
                 <div class="card-body">
                     <form action="#" method="POST" class="form-box">
                     <input type="hidden" name="amount" id="amount-val" class="form-control">
@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Owner Name</label>
+                                    <label>Customer Name</label>
                                     <input type="text" name="name" class="form-control" placeholder="Name" required>
                                 </div>
                             </div>
@@ -76,10 +76,10 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <p><b>Amount : <span id="amount_div">500</span> Rs </b>
+                                <p><b>Amount : <span id="amount_div">600</span> Rs </b>
                                 <br><b>Extra amount : <span id="extra_amount_div">0</span> Rs </b>
                                 <br><b>Discount amount : <span id="discount_amount">0</span> Rs </b>
-                                <br><b>Total payable amount : <span id="total_amount">500</span> Rs </b></p>
+                                <br><b>Total payable amount : <span id="total_amount">600</span> Rs </b></p>
                             </div>
                         </div>
                         <div class="row">
@@ -126,7 +126,7 @@
                             <button class="btn btn-success border-0 add-sample-rows" type="button" id="add-sample-rows"><i class="flaticon-plus"></i></button>
                         </p>
                         <div class="add-more-btn-div">
-                            <button class="btn btn-info border-0 w-100" id="submit-button" name="add_sample">Add Sample</button>
+                            <button class="btn btn-info border-0 w-100 btn-lg" id="submit-button" name="add_sample">Add Sample</button>
                         </div>
                     </form>
                 </div>

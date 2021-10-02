@@ -22,7 +22,7 @@ function genrate_html(bird_id) {
 `;
 }
 
-var Quality = [500,600];
+var Quality = [600,500];
 
 function birdID(length) {
    var result           = '';

@@ -37,17 +37,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Owner Information</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Customer Information</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <p>
-            <b>Owner Name : </b> <span id="owner-name-div"></span>
+            <b>Customer Name : </b> <span id="owner-name-div"></span>
         </p>
         <p>
-            <b>Owner Phone : </b> <span id="owner-phone-div"></span>
+            <b>Customer Phone : </b> <span id="owner-phone-div"></span>
         </p>
         <p>
             <b>Quality : </b> <span id="dna-quality-div"></span>

@@ -2,7 +2,7 @@
 	<nav class="navbar top-navbar navbar-expand-md navbar-dark">
 		<div class="navbar-header" data-logobg="skin5">
 			<a class="navbar-brand" href="../index.php">
-				<img src="../assets/images/logo.png" alt="homepage" class="light-logo dashboard-logo" style="max-width: 180px; width: 100%;" />
+				<img src="../assets/images/logo.png" alt="homepage" class="light-logo dashboard-logo" style="max-width: 79px;  width: 100%; background: #ffffff;" />
 			</a>
 			<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="flaticon-cancel"></i></a>
 		</div>

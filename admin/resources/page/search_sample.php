@@ -22,7 +22,7 @@
   <div class="container">
     <div class="row">
         <div class="col-md-12 col-xl-12">
-            <div class="card p-4">
+            <div class="card p-2">
                 <div class="row">
                     <div class="col-12">
                         <h4 class="alert alert-info text-center">Search Record</h4>
@@ -32,7 +32,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Search By Owner Phone Number</label>
+                                        <label>Search By Customer Phone Number</label>
                                         <input type="text" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="basic-addon2" required value="<?php echo (isset($_POST['phone'])) ? $_POST['phone'] : '' ; ?>" name="phone">
                                     </div>
                                 </div>

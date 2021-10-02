@@ -6,9 +6,11 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Quality DNA Lab</title>
-  <meta content="" name="description">
+  <meta name="description" content="Quality DNA Lab is Offering all Kind of Birds DNA services in affordable price. We are having Imported Equipment's for Birds DNA testing with 99.9% Accuracy of Results. Quality of Service is our First Priority.">
 
-  <meta content="" name="keywords">
+  <meta name="robots" content="index, follow" />
+
+  <meta content="Quality DNA Lab, Birds DNA, Birds DNA Lab, Quality, Ali Birds, Ali Birds Shop, Lahore DNA Lab, Bird DNA, Birds DNA Testing,Birds Sampling" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/images/dna.png" rel="icon">
@@ -64,14 +66,11 @@
     <div class="container">
       <div class="row align-items-center justify-content-between">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap</h2>
-          <div data-aos="fade-up" data-aos-delay="600">
-            <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                <span>Get Started</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
+          <h1 data-aos="fade-up">Quality DNA Lab</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Please Enter your Mobile Number or Bird Ring ID to get your DNA Results.</h2>
+          <div data-aos="fade-up" data-aos-delay="600"><br>
+            <div class="text-center text-lg-start" style="font-size: 22px;">
+              For More Help. CALL NOW <a href="tel:03244667726">0324-4667726</a>
             </div>
           </div>
         </div>
@@ -82,11 +81,11 @@
                 <form action="search.php" method="POST">
                   <div class="form-group mt-4">
                     <label>Phone Number</label>
-                    <input type="text" class="form-control" name='phone' required>
+                    <input type="text" placeholder="Enter Here..." class="form-control" name='phone' required>
                   </div>
                   <div class="form-group mt-4">
-                    <label>DNA ID</label>
-                    <input type="text" class="form-control" name='dna'>
+                    <label>Bird ID</label>
+                    <input type="text" placeholder="Enter Here..." class="form-control" name='dna'>
                   </div>
                   <div class="form-group">
                   <button class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center border-0" type='submit' name='search_sample'>
@@ -114,9 +113,9 @@
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
               <h3>Who We Are</h3>
-              <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
+              <h2>Quality DNA Lab is Offering all Kind of Birds DNA Services in Affordable Price.</h2>
               <p>
-                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
+                Bird DNA testing is the easiest and most accurate way to determine whether your bird is male or female. The process is simple: order a DNA-collection kit from us (included in the price of testing) or make your own kit at home, and then send us the samples. Once samples are received, your results are emailed to you within 5 business days. We test hundreds of species.
               </p>
               <div class="text-center text-lg-start">
                 <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
@@ -128,7 +127,7 @@
           </div>
 
           <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="front_assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="front_assets/img/birds.jpg" class="img-fluid" alt="">
           </div>
 
         </div>
@@ -142,45 +141,37 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="count-box">
               <i class="bi bi-emoji-smile"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="365" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Happy Clients</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="count-box">
               <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Projects</p>
+                <span data-purecounter-start="0" data-purecounter-end="980" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Sample Collected</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="count-box">
-              <i class="bi bi-headset" style="color: #15be56;"></i>
+              <i class="bi bi-clipboard-check" style="color: #15be56;"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hours Of Support</p>
+                <span data-purecounter-start="0" data-purecounter-end="850" data-purecounter-duration="1" class="purecounter"></span>
+                <p>DNA Test Reported</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-people" style="color: #bb0852;"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hard Workers</p>
-              </div>
-            </div>
-          </div>
+          
 
         </div>
 
@@ -194,7 +185,7 @@
 
         <header class="section-header">
           <h2>Testimonials</h2>
-          <p>What they are saying about us</p>
+          <p>What Customers are saying about us</p>
         </header>
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
@@ -206,12 +197,10 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  Great Services offered by Quality DNA Lab. Got Accurate Results of my Birds DNA. Highly Recommended.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="front_assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                  <h3>Saul Goodman</h3>
-                  <h4>Ceo &amp; Founder</h4>
+                  <h3>Ali Haider</h3>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -222,12 +211,10 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  Very easy and super fast. Had some questions and they were very helpful. Definitely recommend.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="front_assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
+                  <h3>Adnan Ahmad</h3>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -238,12 +225,10 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  Sent in DNA sample and got results really fast. Price a was fair, Recommend this service.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="front_assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                  <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
+                  <h3>Zeeshan</h3>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -254,31 +239,15 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  Very happy to see my results. and Got my all birds DNA results with in 24 hours with accuracy.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="front_assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
+                  <h3>Salman</h3>
                 </div>
               </div>
             </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="front_assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
+            
 
           </div>
           <div class="swiper-pagination"></div>
@@ -300,71 +269,40 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-6">
+          <div class="col-lg-12">
 
             <div class="row gy-4">
               <div class="col-md-6">
                 <div class="info-box">
                   <i class="bi bi-geo-alt"></i>
                   <h3>Address</h3>
-                  <p>A108 Adam Street,<br>New York, NY 535022</p>
+                  <p>Ali Birds Shop, Chaudhry Birds Market
+<br> Canal Road Fateh Ghar
+Lahore, Pakistan</p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-box">
                   <i class="bi bi-telephone"></i>
                   <h3>Call Us</h3>
-                  <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                  <p><a href="tel:03244667726">0324-4667726</a><br><a href="tel:03228432745">0322-8432745</a></p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-box">
                   <i class="bi bi-envelope"></i>
                   <h3>Email Us</h3>
-                  <p>info@example.com<br>contact@example.com</p>
+                  <p>qualitydnalab@gmail.com</p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-box">
                   <i class="bi bi-clock"></i>
                   <h3>Open Hours</h3>
-                  <p>Monday - Friday<br>9:00AM - 05:00PM</p>
+                  <p>Monday - Saturday<br>9:00AM - 11:00PM</p>
                 </div>
               </div>
             </div>
-
-          </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
 
           </div>
 

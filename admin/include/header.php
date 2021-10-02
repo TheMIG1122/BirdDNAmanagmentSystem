@@ -10,6 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<meta name="robots" content="noindex, nofollow" />
 	<!-- Favicon icon -->
 	<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/dna.png">
 	<title>Quality DNA | Admin Panel</title>
@@ -87,6 +88,16 @@
 		a {
 		cursor: pointer !important;
 	}
+	#main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper {
+    margin-left: 185px;
+    padding-bottom: 90px;
+}
+.sidebar-nav ul .sidebar-item {
+    width: 200px;
+}
+.left-sidebar {
+    width: 200px;
+}
 	</style>
 </head>
 
