@@ -368,6 +368,7 @@ function get_pending_samples()
 $row = <<<DELIMETER
 <tr>
 	<td>{$sr}</td>
+	<td>{$id}</td>
 	<td>{$bird_id}</td>
 	<td>{$specie}</td>
 	<td>{$type}</td>
@@ -411,6 +412,7 @@ function get_tested_samples()
 $row = <<<DELIMETER
 <tr>
 	<td>{$sr}</td>
+	<td>{$id}</td>
 	<td>{$bird_id}</td>
 	<td>{$specie}</td>
 	<td>{$type}</td>
@@ -527,6 +529,7 @@ $row = <<<DELIMETER
 <tr>
 	<td>{$row_count}</td>
 	{$rowspan}
+	<td>{$sample['id']}</td>
 	<td>{$bird_id}</td>
 	<td>{$specie}</td>
 	<td>{$type}</td> 
@@ -630,6 +633,7 @@ function dna_detail()
 $row = <<<DELIMETER
 <tr>
 	<td>{$sr}</td>
+	<td>{$id}</td>
 	<td>{$bird_id}</td>
 	<td>{$type}</td>
 	<td>{$specie}</td>
@@ -726,5 +730,20 @@ function get_owner_details_search()
 		$count = num_rows($query);
 		$data = fetch_array($query);
 		return ($count > 0) ? "<b> Customer Name: </b> {$data['owner_name']} | <b> Customer Phone : </b> {$data['owner_phone']} " : "" ;
+	}
+}
+
+// Update Settings
+
+function update_setting()
+{
+	if (isset($_POST['update_setting'])) {
+		extract($_POST);
+		$data = array (
+			'quality_a' => $quality_a,
+			'quality_b' => $quality_b,
+			'lab_no' => $lab_no
+		);
+		update_data('settings',$data,'id = 1');
 	}
 }

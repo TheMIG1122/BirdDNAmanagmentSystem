@@ -3,7 +3,7 @@ function genrate_html(bird_id) {
    return `
 <tr>
    <td>
-       <input type="text" name="bird_id[]" class="form-control bird-id-val" required placeholder="Bird ID">
+       <input type="text" name="bird_id[]" class="form-control bird-id-val-t" required placeholder="Bird ID">
    </td>
    <td>
        <input type="text" name="specie[]" class="form-control" required placeholder="Bird Specie">
@@ -216,5 +216,16 @@ $(document).ready(function(){
                 window.location.href = 'index.php?page=credit_detail&owner_id='+owner_id_for_cash+'';
             }
       });
+   });
+
+   // Change BirdID
+   $(document).on('keyup','.bird-id-val-t',function(event) {
+    var key = event.charCode || event.keyCode;
+    event.preventDefault();
+    if (key == 32) {
+        var birdidvalue = $(this).val();
+        console.log(birdidvalue)
+        $(this).val(birdidvalue.slice(0, -1)+"-");
+    } 
    });
 });

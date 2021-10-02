@@ -8,6 +8,7 @@
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?page=tested_sample" aria-expanded="false"><i class="flaticon-approval"></i><span class="hide-menu">Tested Samples</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?page=search_sample" aria-expanded="false"><i class="flaticon-search"></i><span class="hide-menu">Search Sample</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?page=credit_detail" aria-expanded="false"><i class="flaticon-money"></i><span class="hide-menu">Credit Detail</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php?page=settings" aria-expanded="false"><i class="flaticon-settings"></i><span class="hide-menu">Setting</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="logout.php" aria-expanded="false"><i class="flaticon-turn-off"></i><span class="hide-menu">Logout</span></a></li>
             </ul>
         </nav>

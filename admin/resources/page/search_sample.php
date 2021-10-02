@@ -39,7 +39,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Search By Bird ID</label>
-                                        <input type="text" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="basic-addon2" value="<?php echo (isset($_POST['dna'])) ? $_POST['dna'] : '' ; ?>" name="dna">
+                                        <input type="text" class="form-control bird-id-val-t" placeholder="ID" aria-label="Recipient's username" aria-describedby="basic-addon2" value="<?php echo (isset($_POST['dna'])) ? $_POST['dna'] : '' ; ?>" name="dna">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -64,6 +64,7 @@
                                     <tr>
                                         <th style="width:10px">Sr</th>
                                         <th>Basic Information</th>
+                                        <th>DNA ID</th>
                                         <th>BirdID</th>
                                         <th>Specie</th>
                                         <th>Sample Type</th>

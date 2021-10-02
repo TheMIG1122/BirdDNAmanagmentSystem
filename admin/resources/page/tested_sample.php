@@ -28,6 +28,7 @@
                             <thead>
                                 <tr>
                                     <th>Sr</th>
+                                    <th>DNA ID</th>
                                     <th>Bird ID</th>
                                     <th>Specie</th>
                                     <th>Sample Type</th>
