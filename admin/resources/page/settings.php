@@ -38,13 +38,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                 <label>Quality B Amount</label>
-                                    <input type="text" name="quality_b" class="form-control" placeholder="Amount" id="phone-number-value" maxlength="11" required  value="<?php echo $quality_b; ?>">
+                                    <input type="text" name="quality_b" class="form-control" placeholder="Amount" required  value="<?php echo $quality_b; ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                 <label>Lab No.</label>
-                                    <input type="text" name="lab_no" class="form-control" placeholder="Lab No." id="phone-number-value" maxlength="11" required  value="<?php echo $lab_no; ?>">
+                                    <input type="text" name="lab_no" class="form-control" placeholder="Lab No." required  value="<?php echo $lab_no; ?>">
                                 </div>
                             </div>
                         </div>

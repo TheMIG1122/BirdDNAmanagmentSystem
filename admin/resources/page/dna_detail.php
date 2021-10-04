@@ -29,7 +29,6 @@
                         <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
-                                    <th>Sr</th>
                                     <th>DNA ID</th>
                                     <th>Bird ID</th>
                                     <th>Specie</th>

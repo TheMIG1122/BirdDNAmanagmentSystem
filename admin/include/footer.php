@@ -81,11 +81,12 @@
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
-                    <label>Select Gender</label>
+                    <label>Select Result</label>
                     <select name="result" class="form-control">
                         <option value="" hidden>Select</option>
                         <option value="Fe-Male">Fe-Male</option>
                         <option value="Male">Male</option>
+                        <option value="Rejected">Rejected</option>
                     </select>
                 </div>
               </div>

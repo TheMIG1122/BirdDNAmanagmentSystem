@@ -13,15 +13,15 @@ extract($owner);
     <title>PDF Template</title>
 </head>
 <body>
-    <div class="pdf-wrapper" id="pdf" style="font-family:sans-serif !important; width: 1100px;height: auto;color: #000 !important;transform: scale(0.8);">
+    <div class="pdf-wrapper" id="pdf" style="font-family:sans-serif !important;width: 1100px;height: auto;color: #000 !important;transform: scale(.8);transform-origin: top left;">
         <div class="pdf-wrapper-inner">
             <div class="table-outer-most">
-                <div class="table-outer" id="table-outer" style="font-family:sans-serif !important; margin:80px;border: 2px solid;overflow: hidden;margin-top: 0;">
+                <div class="table-outer" id="table-outer" style="font-family:sans-serif !important;margin:80px;border: 2px solid;overflow: hidden;margin-top: 0;font-weight: 700 !important;">
                     <table style="font-family:sans-serif !important; width: 940px;border-spacing: 0px;">
                         <tbody>
                             <tr class="noborder logo-row" style="font-family:sans-serif !important; background-color: #f2bf11;padding: 20px;">
                                 <td colspan="3" style="font-family:sans-serif !important; padding: 20px;border: 0;border-bottom: 2px solid;width: 200px;">
-                                    <img src="assets/images/logo.png" alt="" style="font-family:sans-serif !important; background-color: #fff;width: 100%;">
+                                    <img src="assets/images/logo.png" alt="" style="font-family:sans-serif !important;background: #fff;width: 60%;">
                                 </td>
                                 <td colspan="4" class="align-center" style="font-family:sans-serif !important; padding: 20px;text-align: center;border: 0;border-bottom: 2px solid;">
                                     <span class="text-top" style="font-family:sans-serif !important; font-size: 35px;">QUALITY DNA LAB</span>
@@ -42,6 +42,22 @@ extract($owner);
                                 <td colspan="3" style="font-family:sans-serif !important; padding: 5px;text-align: left;"></td>
                                 <td colspan="2" style="font-family:sans-serif !important; padding: 5px;text-align: left;"><b>Contact Info</b></td>
                                 <td colspan="1" style="font-family:sans-serif !important; padding: 5px;text-align: left;"><?php echo $owner_phone; ?></td>
+                            </tr>
+                            <tr class="noborder-f pad-f">
+                                <td colspan="2" style="font-family:sans-serif !important; padding: 5px;text-align: left;"><b>Lab No :</b></td>
+                                <td colspan="1" style="font-family:sans-serif !important; padding: 5px;text-align: left;"><?php echo $var['global']['lab_no']; ?></td>
+                                <td colspan="3" style="font-family:sans-serif !important; padding: 5px;text-align: left;"></td>
+                                <td colspan="2" style="font-family:sans-serif !important; padding: 5px;text-align: left;"></td>
+                                <td colspan="1" style="font-family:sans-serif !important; padding: 5px;text-align: left;"></td>
+                            </tr>
+                            <tr class="noborder dna-report" style="font-family:sans-serif !important;/* background: #67ccfe; */text-align: center;font-size: 18px;font-weight: 600;">
+                                <td colspan="9" style="font-family:sans-serif !important;/* padding: 10px; */border: 0;/* border-bottom: 2px solid; *//* border-top: 2px solid; */">
+                                    <p class="bottom-text" style="font-family:sans-serif !important;padding: 25px 10px;text-align: center;border-top: 2px solid;margin: 0;font-size: 18px;font-weight: 600;font-family: sans-serif;">
+                                        Ali Birds Shop, Chaudhary Canal Birds Market, Fateh Garh Lahore.
+                                        <br>
+                                        0322-8432745, 0324-4667726
+                                    </p>
+                                </td>
                             </tr>
                             <tr class="noborder dna-report" style="font-family:sans-serif !important; background: #67ccfe;text-align: center;font-size: 18px;font-weight: 600;">
                                 <td colspan="9" style="font-family:sans-serif !important; padding: 10px;border: 0;border-bottom: 2px solid;border-top: 2px solid;">
@@ -99,67 +115,8 @@ extract($owner);
                                 <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
                                 <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;border: 0;"></td>
                             </tr>
-                            <tr class="sample-row">
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;width: 40px;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;border: 0;"></td>
-                            </tr>
-                            <tr class="sample-row">
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;width: 40px;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;border: 0;"></td>
-                            </tr>
-                            <tr class="sample-row">
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;width: 40px;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;border: 0;"></td>
-                            </tr>
-                            <tr class="sample-row">
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;width: 40px;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;border: 0;"></td>
-                            </tr>
-                            <tr class="sample-row">
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;width: 40px;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;border: 0;"></td>
-                            </tr>
-                            <tr class="sample-row">
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;width: 40px;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td colspan="2" style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;"></td>
-                                <td style="font-family:sans-serif !important; padding: 10px;height: 30px;border-right: 2px solid;border: 0;"></td>
-                            </tr>
                         </tbody>
                     </table>
-                    <p class="bottom-text" style="font-family:sans-serif !important; padding: 25px 10px;text-align: center;border-top: 2px solid;margin: 0;font-size: 15px;font-weight: 600;font-family: sans-serif;">
-                        Ali Birds Shop, Chaudhary Canal Birds Market, Fateh Garh Lahore.
-                        <br>
-                        0322-8432745, 0324-4667726
-                    </p>
                 </div>
             </div>
         </div>
@@ -179,6 +136,66 @@ function genPDF() {
             doc.save('<?php echo $owner_name; ?> (<?php echo time() ?>).pdf');
         }
     });
+    // html2pdf();
+    // html2canvas($('#pdf'), {
+    //     onrendered: function(canvas) {
+    //         var img = canvas.toDataURL("image/png");
+    //         var doc = new jsPDF('p', 'pt', 'a4');
+    //         doc.addHTML(img);
+    //         doc.addImage(img, 'JPEG', 10, 10, 199, 300);
+    //         doc.save('<?php echo $owner_name; ?> (<?php echo time() ?>).pdf');
+    //     }
+    // });
+    // var pdf = new jsPDF('p', 'pt', 'a4');
+    // var options = {
+    //         pagesplit: true
+    //     };
+
+    // pdf.addHTML($("#pdf"), options, function()
+    // {
+    //     pdf.save("test.pdf");
+    // });
+///-------------------
+    // html2canvas($('#pdf'), {
+    //     height: 2480,
+    //     height: 3508
+    //   }).then((canvas) => {
+    //     let imgWidth = 800;
+    //     let pageHeight = 1200;
+    //     let imgHeight =
+    //       ((canvas.height * imgWidth) / 2454)*1.24;
+    //     var heightLeft = imgHeight;
+
+    //     const imgData = canvas.toDataURL("image/png");
+
+    //     const pdf = new jsPDF({
+    //       orientation: "p",
+    //       unit: "mm",
+    //     //   format: [400, 480],
+    //     });
+
+    //     let position = 0;
+    //     // pdf.setFillColor(248);
+    //     // pdf.rect(0, 0, 400, 480, "F");
+    //     // pdf.addImage(imgData, "JPEG", 0, 0, 400, 400);
+    //     // pdf.setFontSize(35);
+    //     // pdf.text('SMRF 360', 10, 420);
+    //     // pdf.setFontSize(15);
+    //     // pdf.text(`Feedback report`, 10, 433)
+    //     // pdf.text('March 2021', 10, 440)
+    //     // pdf.addPage();
+    //     // alert(imgWidth)
+    //     pdf.addImage(imgData, "PNG",0, position, 199, 300);
+    //     heightLeft -= pageHeight;
+
+    //     while (heightLeft >= 0) {
+    //       position = heightLeft - imgHeight;
+    //       pdf.addPage();
+    //       pdf.addImage(imgData, "PNG",0, position, 199, 300);
+    //       heightLeft -= pageHeight;
+    //     }
+    //     pdf.save("Result.pdf");
+    //   });
 }
 
 $(document).ready(function() {

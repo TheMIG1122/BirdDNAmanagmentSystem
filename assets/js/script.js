@@ -1,3 +1,4 @@
+setTimeout(console.clear(),1000)
 // Site Custom Script
 function genrate_html(bird_id) {
    return `
@@ -22,7 +23,7 @@ function genrate_html(bird_id) {
 `;
 }
 
-var Quality = [600,500];
+var Quality = [parseInt($("#a_quality_amount").val()),parseInt($("#b_quality_amount").val())];
 
 function birdID(length) {
    var result           = '';
@@ -69,6 +70,9 @@ function get_percentage(discount_value,total_value) {
 // console.log(birdID(8));
 
 $(document).ready(function(){
+
+    // console.clear()
+    console.clear();
 
     // Add more sample Rows
     $(document).on('click','.add-sample-rows',function(){

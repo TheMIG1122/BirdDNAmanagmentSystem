@@ -25,7 +25,7 @@
         <div class="col-md-12 col-xl-12">
             <div class="card p-2">
                 <div class="card-body">
-                    <p><b>Total Amount </b>: <?php echo count_total('owners',"WHERE payment_status = 'Credit'","total");?> Rs <b>Total QTY</b> : <?php echo count_total('owners',"WHERE payment_status = 'Credit'","quantity");?> Samples</p>
+                    <p><b>Total Amount </b>: <?php  echo calculate_total_amount("WHERE payment_status = 'Credit'");?> Rs <b>Total QTY</b> : <?php echo count_total('owners',"WHERE payment_status = 'Credit'","quantity");?> Samples</p>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table">
                             <thead>

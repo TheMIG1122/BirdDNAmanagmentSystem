@@ -1,4 +1,4 @@
-<?php add_sample(); ?>
+<?php global $var; add_sample(); ?>
 <div class="page-wrapper">
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">
@@ -25,13 +25,13 @@
             <div class="card p-2">
                 <div class="card-body">
                     <form action="#" method="POST" class="form-box">
-                    <input type="hidden" name="amount" id="amount-val" class="form-control">
+                    <input type="hidden" name="amount" id="quality-amount-val" class="form-control" value="<?php echo $var['add_sample']['quality_amount'][0]; ?>">
                     <input type="hidden" name="discount" id="discount-val" class="form-control">
-                    <input type="hidden" name="total" id="total-val" class="form-control">
+                    <input type="hidden" name="total" id="total-val" class="form-control" value="<?php echo $var['add_sample']['quality_amount'][0]; ?>">
                     <input type="hidden" name="quantity" id="quantity-val" class="form-control" value="1">
                         <div class="row">
                             <div class="col-12">
-                                <h4 class="alert alert-info text-center">Customer Info</h4>
+                                <h4 class="alert alert-info text-center">Owner Info</h4>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -72,7 +72,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Discount (%)</label>
-                                    <input type="number" max="50" class="form-control" placeholder="Discount" id="discount_value">
+                                    <input type="number" class="form-control" placeholder="Discount" id="discount_value">
                                 </div>
                             </div>
                             <div class="col-12">
@@ -104,7 +104,8 @@
                                     <tbody id="add-samples-box">
                                         <tr>
                                             <td>
-                                                <input type="text" name="bird_id[]" class="form-control bird-id-val-t" required placeholder="Bird ID">
+                                                <input type="text" name="bird_id[]" class="form-control bird-id-val-t" required placeholder="Bird ID" id="dddsss">
+                                                <!-- <span class="error text-danger">Bird Specie</span> -->
                                             </td>
                                             <td>
                                                 <input type="text" name="specie[]" class="form-control" required placeholder="Bird Specie">

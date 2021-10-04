@@ -1,4 +1,4 @@
-
+<?php echo '<input type="hidden" id="a_quality_amount" value="'.$quality_a.'"><input type="hidden" id="b_quality_amount" value="'.$quality_b.'">'; ?>
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">

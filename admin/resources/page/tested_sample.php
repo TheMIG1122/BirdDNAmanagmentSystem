@@ -1,3 +1,4 @@
+<?php delete_sample();?>
 <div class="page-wrapper">
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">
@@ -27,7 +28,6 @@
                         <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
-                                    <th>Sr</th>
                                     <th>DNA ID</th>
                                     <th>Bird ID</th>
                                     <th>Specie</th>
