@@ -93,10 +93,17 @@
     padding-bottom: 90px;
 }
 .sidebar-nav ul .sidebar-item {
-    width: 200px;
+    width: 185px;
 }
 .left-sidebar {
-    width: 200px;
+    width: 185px;
+}
+.table td, .table th {
+    padding: 0.3rem;
+    font-size: 14px;
+}
+.card-body {
+    padding: 0;
 }
 	</style>
 </head>

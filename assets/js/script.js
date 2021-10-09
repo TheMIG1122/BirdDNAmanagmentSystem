@@ -15,7 +15,8 @@ function genrate_html(bird_id) {
         <option value="Blood">Blood</option>
     </select>
    </td>
-   <td>
+   <td style="text-align: center;
+    padding-top: 10px;">
        <!--- <button class="btn btn-success border-0 add-sample-rows" type="button"><i class="flaticon-plus"></i></button> --->
         <button class="btn btn-danger border-0 delete-sample-row" type="button"><i class="flaticon-cancel"></i></button>
    </td>

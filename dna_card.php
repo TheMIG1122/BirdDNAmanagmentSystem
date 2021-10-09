@@ -48,7 +48,7 @@ img {
 				<div class="pos no-print" id="main1" style="top:0">
 					<img name="_1100:850" src="assets/images/card/final.png" border="0" usemap="#Map">
 				</div>
-				<div class="pos" id="_682:76" style="top: 25px;left: 615;">
+				<div class="pos" id="_682:76" style="top: 16px;left: 615;">
 					<span id="_15.0" style=" font-family:Arial; font-size:15.0px; color:#000000">
 					    <?php echo $id?>
                     </span>

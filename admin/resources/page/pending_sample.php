@@ -23,7 +23,7 @@
   <div class="container">
     <div class="row">
         <div class="col-md-12 col-xl-12">
-            <div class="card p-4">
+            <div class="card p-2">
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table">
@@ -33,9 +33,11 @@
                                     <th>Bird ID</th>
                                     <th>Specie</th>
                                     <th>Sample Type</th>
-                                    <th>Payment Status</th>
+                                    <th>Quality</th>
+                                    <th>Payment</th>
                                     <th>Received Date</th>
                                     <th>Action</th>
+                                    <th style="width:80px">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="tbody">

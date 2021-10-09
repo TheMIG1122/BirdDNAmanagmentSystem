@@ -31,18 +31,18 @@
                     <input type="hidden" name="quantity" id="quantity-val" class="form-control" value="1">
                         <div class="row">
                             <div class="col-12">
-                                <h4 class="alert alert-info text-center">Owner Info</h4>
+                                <h4 class="alert alert-info text-center">Customer Info</h4>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Customer Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                 <label>Phone Number</label>
-                                    <input type="text" name="phone" class="form-control" placeholder="Number" id="phone-number-value" maxlength="11" required title="Please enter 11 digit number">
+                                    <input type="text" name="phone" class="form-control" placeholder="Enter Number" id="phone-number-value" maxlength="11" required title="Please enter 11 digit number">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Payment Status</label>
+                                    <label>Payment Type</label>
                                     <select name="payment_status" class="form-control" required>
                                         <option value="Cash">Cash</option>
                                         <option value="Credit">Credit</option>
@@ -66,13 +66,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Extra Amount</label>
-                                    <input type="number" class="form-control" placeholder="Amount" name='extra_amount' id="extra_amount_value">
+                                    <input type="number" class="form-control" placeholder="Enter Amount" name='extra_amount' id="extra_amount_value">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Discount (%)</label>
-                                    <input type="number" class="form-control" placeholder="Discount" id="discount_value">
+                                    <input type="number" class="form-control" placeholder="Enter Discount" id="discount_value">
                                 </div>
                             </div>
                             <div class="col-12">

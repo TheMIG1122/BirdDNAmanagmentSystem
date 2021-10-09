@@ -54,7 +54,7 @@
         <div class="col-md-3 col-xl-3">
             <div class="card bg-c-blue order-card">
                 <div class="card-block">
-                    <h4 class="m-b-20">Pending Paymentss</h4>
+                    <h4 class="m-b-20">Pending Payments</h4>
                     <h2 class="text-right custom-icon"><img src="../assets/images/icons/money.png" alt=""><span><?php echo count_total('owners',"WHERE payment_status = 'Credit'","total");?> Rs</span></h2>
                     <p class="m-b-0"><a href="index.php?page=credit_detail">Expore More <span class="fas fa-angle-right"></span></a></p>
                 </div>
@@ -64,7 +64,7 @@
         <div class="col-md-3 col-xl-3">
             <div class="card fe-male-card order-card">
                 <div class="card-block">
-                    <h4 class="m-b-20">Fe-Male</h4>
+                    <h4 class="m-b-20">FeMale</h4>
                     <h2 class="text-right custom-icon"><img src="../assets/images/icons/femaleW.png" alt=""><span><?php echo count_row('dna_samples','WHERE result="Fe-Male"')?></span></h2>
                     <p class="m-b-0"><a href="index.php?page=tested_sample&type=Fe-Male">Expore More <span class="fas fa-angle-right"></span></a></p>
                 </div>

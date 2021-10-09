@@ -31,12 +31,13 @@
                                     <th>DNA ID</th>
                                     <th>Bird ID</th>
                                     <th>Specie</th>
-                                    <th>Sample Type</th>
-                                    <th>Gender Result</th>
+                                    <th>Type</th>
+                                    <th>Gender</th>
                                     <th>Quality</th>
-                                    <th>Payment Status</th>
-                                    <th style="width:100px">Dates</th>
+                                    <th>Payment</th>
+                                    <th style="width:180px">Dates</th>
                                     <th>Action</th>
+                                    <th style="width:80px">Action</th>
                                 </tr>
                             </thead>
                             <div class="tbody">

@@ -70,7 +70,7 @@
           <h2 data-aos="fade-up" data-aos-delay="400">Please Enter your Mobile Number or Bird Ring ID to get your DNA Results.</h2>
           <div data-aos="fade-up" data-aos-delay="600"><br>
             <div class="text-center text-lg-start" style="font-size: 22px;">
-              For More Help. CALL NOW <a href="tel:03244667726">0324-4667726</a>
+              For More Help. CALL NOW <a class="btn btn-warning" href="tel:03244667726">0324-4667726</a>
             </div>
           </div>
         </div>

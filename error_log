@@ -1,0 +1,53 @@
+[05-Oct-2021 17:35:46 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/qualitydnalabcom/public_html/resources/config.php on line 13
+[05-Oct-2021 17:35:46 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/config.php on line 15
+[05-Oct-2021 17:35:46 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:35:46 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:35:57 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/qualitydnalabcom/public_html/resources/config.php on line 13
+[05-Oct-2021 17:35:57 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/config.php on line 15
+[05-Oct-2021 17:35:57 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:35:57 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:35:57 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 69
+[05-Oct-2021 17:35:57 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 77
+[05-Oct-2021 17:35:58 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/qualitydnalabcom/public_html/resources/config.php on line 13
+[05-Oct-2021 17:35:58 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/config.php on line 15
+[05-Oct-2021 17:35:58 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:35:58 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:35:58 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 69
+[05-Oct-2021 17:35:58 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 77
+[05-Oct-2021 17:36:04 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/qualitydnalabcom/public_html/resources/config.php on line 13
+[05-Oct-2021 17:36:04 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/config.php on line 15
+[05-Oct-2021 17:36:04 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:36:04 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:36:04 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 69
+[05-Oct-2021 17:36:04 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 77
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/qualitydnalabcom/public_html/resources/config.php on line 13
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/config.php on line 15
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 69
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 77
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/qualitydnalabcom/public_html/resources/config.php on line 13
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/config.php on line 15
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 69
+[05-Oct-2021 17:36:07 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 77
+[05-Oct-2021 17:36:08 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/qualitydnalabcom/public_html/resources/config.php on line 13
+[05-Oct-2021 17:36:08 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/config.php on line 15
+[05-Oct-2021 17:36:08 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:36:08 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:36:08 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 69
+[05-Oct-2021 17:36:08 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 77
+[05-Oct-2021 17:37:20 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/qualitydnalabcom/public_html/resources/config.php on line 13
+[05-Oct-2021 17:37:20 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/config.php on line 15
+[05-Oct-2021 17:37:20 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:37:20 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:37:20 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 69
+[05-Oct-2021 17:37:20 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 77
+[05-Oct-2021 17:37:30 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/qualitydnalabcom/public_html/resources/config.php on line 13
+[05-Oct-2021 17:37:30 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/config.php on line 15
+[05-Oct-2021 17:37:30 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:37:30 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/resources/config.php on line 16
+[05-Oct-2021 17:37:30 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 69
+[05-Oct-2021 17:37:30 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home/qualitydnalabcom/public_html/resources/functions.php on line 77
+[06-Oct-2021 23:06:50 America/New_York] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/qualitydnalabcom/public_html/dna_pdf.php on line 5

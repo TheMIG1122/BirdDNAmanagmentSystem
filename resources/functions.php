@@ -204,7 +204,7 @@ function create_gender_div($gender)
 	if ( $gender == "Male" ) {
 		$div = '<span class="gender-result male"><i class="flaticon-mars"></i> Male</span>';
 	} else if ( $gender == "Fe-Male" ) {
-		$div = '<span class="gender-result female"><i class="flaticon-female"></i> Fe-Male</span>';
+		$div = '<span class="gender-result female"><i class="flaticon-female"></i> Female</span>';
 	} else if ( $gender == "Rejected" ) {
 		$div = '<span class="text-danger">Rejected</span>';
 	} else {
@@ -438,16 +438,20 @@ function get_pending_samples()
 $row = <<<DELIMETER
 <tr>
 	<td>{$data['id']}</td>
-	<td>{$bird_id}</td>
+	<td><b>{$bird_id}</b></td>
 	<td>{$specie}</td>
 	<td>{$type}</td>
+	<td class="text-center">{$quality}</td>
 	<td>{$payment_status}</td>
 	<td>{$received_date}</td>
 	<td class="text-center">
-		<a href="#" class="d-block mt-1 btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total}" style="display: inline-block;">Customer Detail</a> 
-		<a href="#" class="d-block mt-1 btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}" style="display: inline-block;">Add Result</a>
 		<a href="index.php?page=edit_sample&dna_id={$data['id']}" class="d-block mt-1 btn-sm btn-primary border-0">Edit</a>
 		<a href="index.php?page=pending_sample&dna_id={$data['id']}&qty={$quantity}&owner_id={$owner['id']}&delete=true" class="d-block mt-1 btn-sm btn-danger border-0">Delete</a>
+
+	</td>
+	<td class="text-center">
+		<a href="#" class="d-block mt-1 btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total}" style="display: inline-block;">Customer Detail</a> 
+		<a href="#" class="d-block mt-1 btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}" style="display: inline-block;">Add Result</a>
 	</td>
 </tr>
 DELIMETER;
@@ -483,19 +487,24 @@ function get_tested_samples()
 $row = <<<DELIMETER
 <tr>
 	<td>{$data['id']}</td>
-	<td>{$bird_id}</td>
+	<td><b>{$bird_id}</b></td>
 	<td>{$specie}</td>
 	<td>{$type}</td>
 	<td>{$result}</td>
-	<td><b>{$var['add_sample']['quality_text'][$quality]}</b></td>
+	<td class="text-center"><b>{$var['add_sample']['quality_text'][$quality]}</b></td>
 	<td>{$payment_div}</td>
 	<td>{$dates}</td>
 	<td class="text-center">
-	<a href="#" class="btn-sm btn-info border-0 show-owner-detail d-block" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$var['add_sample']['quality_text'][$quality]}" data-quantity="{$quantity}" data-payment_status="{$payment_status}" data-total="{$total}"  style="display: inline-block;">Customer Detail</a>
-		{$card_btn}
 	<a href="index.php?page=edit_sample&dna_id={$data['id']}&tested=true" class="btn-sm btn-primary border-0 d-block mt-1">Edit</a>
 	<a href="index.php?page=tested_sample&dna_id={$data['id']}&qty={$quantity}&owner_id={$owner['id']}&delete=true" class="d-block mt-1 btn-sm btn-danger border-0">Delete</a>
 	</td>
+
+	<td class="text-center">
+	<a href="#" class="btn-sm btn-info border-0 show-owner-detail d-block" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$var['add_sample']['quality_text'][$quality]}" data-quantity="{$quantity}" data-payment_status="{$payment_status}" data-total="{$total}"  style="display: inline-block;">Customer Detail</a>
+		{$card_btn}
+	
+	</td>
+
 </tr>
 DELIMETER;
 		echo $row;
@@ -827,10 +836,18 @@ function delete_sample()
 			$sql = "DELETE FROM dna_samples WHERE id={$dna_id}";
 			$query = query($sql);
 			confirm($query);
+
+			$sql1 = "SELECT * FROM owners WHERE id = ".$owner_id."";
+			$query1 = query($sql1);
+			confirm($query1);
+			$data1 = fetch_array($query1);
+			$remaining = $data1['total'] - $data1['amount'];
+	
 			$data = array (
-				'quantity' => intval($qty)-1
+				'quantity' => intval($qty)-1,
+				'total' => $remaining
 			);
-			update_data('owners',$data,'id = 1');
+			update_data('owners',$data,'id = '.$owner_id.'');
 			sweetalert('success','Sample Deleted successfuly.','index.php?page='.$page);
 		} elseif ($records == 1) {
 			$sql = "DELETE FROM dna_samples WHERE id={$dna_id}";
@@ -843,6 +860,24 @@ function delete_sample()
 		}
 	}
 }
+// function update_data($table,$data,$where)
+// {
+// 	$count = count($data);
+// 	$string = "";
+// 	$update = "";
+// 	if (isset($data['updated_at'])) {
+// 		$update = ',updated_at=CURRENT_TIMESTAMP ';
+// 		unset($data['updated_at']);
+// 	}
+// 	foreach($data as $index => $value) {
+// 		$string .= $index."='".$value."',";
+// 	}
+// 	$string = substr($string,0,-1);
+// 	$string .= $update;
+// 	$sql = "UPDATE {$table} SET {$string} WHERE {$where}";
+// 	$query = query($sql);
+// 	confirm($query);
+// }
 
 // Update Settings
 
