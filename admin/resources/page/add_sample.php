@@ -42,7 +42,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                 <label>Phone Number</label>
-                                    <input type="text" name="phone" class="form-control" placeholder="Enter Number" id="phone-number-value" maxlength="11" required title="Please enter 11 digit number">
+                                    <input type="text" name="phone" class="form-control" placeholder="Enter Number" id="phone-number-value" maxlength="11" required title="Please enter 11 digit number" value="03084752699">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -104,8 +104,8 @@
                                     <tbody id="add-samples-box">
                                         <tr>
                                             <td>
-                                                <input type="text" name="bird_id[]" class="form-control bird-id-val-t" required placeholder="Bird ID" id="dddsss">
-                                                <!-- <span class="error text-danger">Bird Specie</span> -->
+                                                <input type="text" name="bird_id[]" class="form-control bird-id-val-t bird-id-1" data-class="bird-id-1" required placeholder="Bird ID" id="dddsss">
+                                                <span class="error text-danger" style="display:none">DNA ID already available</span>
                                             </td>
                                             <td>
                                                 <input type="text" name="specie[]" class="form-control" required placeholder="Bird Specie">

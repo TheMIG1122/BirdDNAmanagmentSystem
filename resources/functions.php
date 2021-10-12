@@ -301,6 +301,26 @@ function calculate_total_amount($where)
 	return $total;
 }
 
+function get_total_amount_id($owner_id)
+{
+	$sql = "SELECT amount,quantity,extra_amount,discount FROM owners {$where}";
+	$query = query($sql);
+	confirm($query);
+	$count = num_rows($query);
+	$total = 0;
+	if($count > 0) {
+		while ($data = fetch_array($query)) {
+			extract($data);
+			$subTotal = ((intval($quantity)*intval($amount)) + intval($extra_amount)) - intval($discount);
+			$total = $subTotal+$total;
+		}
+	} else {
+		$total = 0;
+	}
+
+	return $total;
+}
+
 /*
 
 // Admin Functions
@@ -365,14 +385,15 @@ function add_sample()
 		);
 		$owner_id = insert_data_return('owners',$data);
 		$count = count($bird_id);
-
 		for ( $i=0; $i<$count; $i++ ) {
+			$bird_id[$i] = str_replace(" ","-",$bird_id[$i]);
 			$data = array (
 				'bird_id' => $bird_id[$i],
 				'specie' => $specie[$i],
 				'type' => $type[$i],
 				'owner_id' => $owner_id
 			);
+
 			insert_data('dna_samples',$data);
 		}
 
@@ -435,6 +456,7 @@ function get_pending_samples()
 		$quality = "<b>{$var['add_sample']['quality_text'][$owner['quality']]}</b>";
 		$received_date = convert_date($data['created_at']);
 		$reported_date = convert_date($data['updated_at']);
+		$total_amount = calculate_total_amount(" WHERE id = {$owner_id}");
 $row = <<<DELIMETER
 <tr>
 	<td>{$data['id']}</td>
@@ -451,7 +473,7 @@ $row = <<<DELIMETER
 
 	</td>
 	<td class="text-center">
-		<a href="#" class="d-block mt-1 btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total}" style="display: inline-block;">Customer Detail</a> 
+		<a href="#" class="d-block mt-1 btn-sm btn-info border-0 show-owner-detail" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$quality}" data-quantity="{$quantity}" data-payment_status="{$owner['payment_status']}" data-total="{$total_amount}" style="display: inline-block;">Customer Detail</a> 
 		<a href="#" class="d-block mt-1 btn-sm btn-success border-0 add-sample-result" data-sampleID="{$data['id']}" style="display: inline-block;">Add Result</a>
 	</td>
 </tr>
@@ -505,6 +527,48 @@ $row = <<<DELIMETER
 	<a href="#" class="btn-sm btn-info border-0 show-owner-detail d-block" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$var['add_sample']['quality_text'][$quality]}" data-quantity="{$quantity}" data-payment_status="{$payment_status}" data-total="{$total}"  style="display: inline-block;">Customer Detail</a>
 		{$card_btn}
 	
+	</td>
+
+</tr>
+DELIMETER;
+		echo $row;
+		$sr++;
+	}
+}
+
+function get_rejected_samples()
+{
+	global $var;
+	$sql = "SELECT * FROM dna_samples WHERE result = 'Rejected' ORDER BY updated_at DESC";
+	$query = query($sql);
+	confirm($query);
+	$sr = 1;
+	while ( $data = fetch_array($query) ) {
+		extract($data);
+		$owner = get_record( 'owners',"WHERE id = {$owner_id}" );
+		extract($owner);
+		$result = create_gender_div($result);
+		$payment_div = genrate_payment_div($payment_status);
+		$received_date = convert_date($data['created_at']);
+		$reported_date = convert_date($data['updated_at']);
+		$dates = "<b>Received Date: </b>".$received_date." <b><br>Reported Date: </b>".$reported_date;
+$row = <<<DELIMETER
+<tr>
+	<td>{$data['id']}</td>
+	<td>{$owner_name}</td>
+	<td><b>{$bird_id}</b></td>
+	<td>{$specie}</td>
+	<td>{$type}</td>
+	<td>{$result}</td>
+	<td class="text-center"><b>{$var['add_sample']['quality_text'][$quality]}</b></td>
+	<td>{$payment_div}</td>
+	<td>{$dates}</td>
+	<td class="text-center">
+		<a href="index.php?page=rejected_samples&dna_id={$data['id']}&qty={$quantity}&owner_id={$owner['id']}&delete=true" class="d-block mt-1 btn-sm btn-danger border-0">Delete</a>
+	</td>
+
+	<td class="text-center">
+		<a href="#" class="btn-sm btn-info border-0 show-owner-detail d-block" data-name="{$owner_name}" data-phone="{$owner_phone}" data-quality="{$var['add_sample']['quality_text'][$quality]}" data-quantity="{$quantity}" data-payment_status="{$payment_status}" data-total="{$total}"  style="display: inline-block;">Customer Detail</a>
 	</td>
 
 </tr>
@@ -895,3 +959,100 @@ function update_setting()
 		update_data('settings',$data,'id = 1');
 	}
 }
+
+function validate_sampleID()
+{
+	extract($_POST);
+	$count = count($data);
+	$return_data = [];
+	for ($i=0; $i<$count; $i++) {
+		$sql = "SELECT 	owners.owner_name,dna_samples.bird_id,dna_samples.result,dna_samples.status FROM owners,dna_samples WHERE owners.owner_phone = '{$phone}' AND dna_samples.bird_id = '{$data[$i]['bird_id']}'";
+		// echo $sql;
+		$query = query($sql);
+		confirm($query);
+		$row_count = num_rows($query);
+		if ($row_count > 0) {
+			$sample_data = fetch_array($query);
+			extract($sample_data);
+			if ($result != 'Rejected') {
+				$temp_data = array(
+					"class_name" => $data[$i]['class']
+				);
+				array_push($return_data,$temp_data);
+			}
+		}
+	}
+	echo json_encode($return_data);
+}
+
+function Export_Database($tables=false, $backup_name=false )
+    {
+
+        $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME); 
+        $mysqli->select_db($name); 
+        $mysqli->query("SET NAMES 'utf8'");
+
+        $queryTables    = $mysqli->query('SHOW TABLES'); 
+        while($row = $queryTables->fetch_row()) 
+        { 
+            $target_tables[] = $row[0]; 
+        }   
+        if($tables !== false) 
+        { 
+            $target_tables = array_intersect( $target_tables, $tables); 
+        }
+        foreach($target_tables as $table)
+        {
+            $result         =   $mysqli->query('SELECT * FROM '.$table);  
+            $fields_amount  =   $result->field_count;  
+            $rows_num=$mysqli->affected_rows;     
+            $res            =   $mysqli->query('SHOW CREATE TABLE '.$table); 
+            $TableMLine     =   $res->fetch_row();
+            $content        = (!isset($content) ?  '' : $content) . "\n\n".$TableMLine[1].";\n\n";
+
+            for ($i = 0, $st_counter = 0; $i < $fields_amount;   $i++, $st_counter=0) 
+            {
+                while($row = $result->fetch_row())  
+                { //when started (and every after 100 command cycle):
+                    if ($st_counter%100 == 0 || $st_counter == 0 )  
+                    {
+                            $content .= "\nINSERT INTO ".$table." VALUES";
+                    }
+                    $content .= "\n(";
+                    for($j=0; $j<$fields_amount; $j++)  
+                    { 
+                        $row[$j] = str_replace("\n","\\n", addslashes($row[$j]) ); 
+                        if (isset($row[$j]))
+                        {
+                            $content .= '"'.$row[$j].'"' ; 
+                        }
+                        else 
+                        {   
+                            $content .= '""';
+                        }     
+                        if ($j<($fields_amount-1))
+                        {
+                                $content.= ',';
+                        }      
+                    }
+                    $content .=")";
+                    //every after 100 command cycle [or at last line] ....p.s. but should be inserted 1 cycle eariler
+                    if ( (($st_counter+1)%100==0 && $st_counter!=0) || $st_counter+1==$rows_num) 
+                    {   
+                        $content .= ";";
+                    } 
+                    else 
+                    {
+                        $content .= ",";
+                    } 
+                    $st_counter=$st_counter+1;
+                }
+            } $content .="\n\n\n";
+        }
+        //$backup_name = $backup_name ? $backup_name : $name."___(".date('H-i-s')."_".date('d-m-Y').")__rand".rand(1,11111111).".sql";
+        $backup_name = $backup_name ? $backup_name : $name.".sql";
+        header('Content-Type: application/octet-stream');   
+        header("Content-Transfer-Encoding: Binary"); 
+        header("Content-disposition: attachment; filename=\"".$backup_name."\"");  
+        echo $content; exit;
+    }

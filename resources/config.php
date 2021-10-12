@@ -16,7 +16,6 @@ defined('DB_NAME') ? null : define('DB_NAME', 'techroar_birddna' );
 
 
 $connection = mysqli_connect(DB_HOST , DB_USER , DB_PASS , DB_NAME);
-
 $query = mysqli_query($connection,'SELECT * FROM `settings` WHERE id = 1');
 extract(mysqli_fetch_array($query));
 

@@ -215,3 +215,12 @@ body {
     padding: 10px;
 }
 
+.icon-img img {
+    width: 24px;
+    padding-left: 0;
+    margin-left: 5px;
+}
+
+.icon-img {
+    padding-right: 11px;
+}

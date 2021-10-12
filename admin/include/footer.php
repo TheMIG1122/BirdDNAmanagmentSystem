@@ -115,7 +115,9 @@
 
 <script>
     $(document).ready(function() {
-        $('<?php echo $var['global']['table_id'] ?>').DataTable();
+        $('<?php echo $var['global']['table_id'] ?>').DataTable( {
+          "aaSorting": []
+        });
     } );
 
     <?php if (isset($_GET['send_notification'])) {

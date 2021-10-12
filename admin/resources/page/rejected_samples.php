@@ -1,3 +1,4 @@
+<?php delete_sample();?>
 <div class="page-wrapper">
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">
@@ -28,17 +29,20 @@
                             <thead>
                                 <tr>
                                     <th>DNA ID</th>
+                                    <th>Owner Name</th>
                                     <th>Bird ID</th>
                                     <th>Specie</th>
-                                    <th>Sample Type</th>
+                                    <th>Type</th>
+                                    <th>Gender</th>
                                     <th>Quality</th>
-                                    <th>Payment Status</th>
-                                    <th style="width:100px">Dates</th>
+                                    <th>Payment</th>
+                                    <th style="width:180px">Dates</th>
                                     <th>Action</th>
+                                    <th style="width:80px">Action</th>
                                 </tr>
                             </thead>
                             <div class="tbody">
-                                <?php get_tested_samples(); ?>
+                                <?php get_rejected_samples(); ?>
                             </div>
                         </table>
                     </div>
