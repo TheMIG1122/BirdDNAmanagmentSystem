@@ -85,7 +85,7 @@
                   </div>
                   <div class="form-group mt-4">
                     <label>Bird ID</label>
-                    <input type="text" placeholder="Enter Here..." class="form-control" name='dna'>
+                    <input type="text" placeholder="Enter Here..." class="form-control" name='dna' id="bird_ID">
                   </div>
                   <div class="form-group">
                   <button class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center border-0" type='submit' name='search_sample'>
@@ -327,6 +327,7 @@ Lahore, Pakistan</p>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="front_assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
   <script src="front_assets/vendor/aos/aos.js"></script>
   <script src="front_assets/vendor/php-email-form/validate.js"></script>
@@ -337,6 +338,17 @@ Lahore, Pakistan</p>
 
   <!-- Template Main JS File -->
   <script src="front_assets/js/main.js"></script>
+  <script>
+    jQuery(document).on('keyup','#bird_ID',function(event) {
+     var key = event.charCode || event.keyCode;
+     event.preventDefault();
+     if (key == 32) {
+         var birdidvalue = $(this).val();
+        //  console.log(birdidvalue)
+         $(this).val(birdidvalue.slice(0, -1)+"-");
+     }
+    });
+  </script>
 
 </body>
 
