@@ -100,7 +100,7 @@
         </div>
       </div>
     </div>
-
+    <a href="#about" class="go-to-next-section d-flex align-items-center justify-content-center active"><i class="bi bi-arrow-down-short"></i></a>
   </section><!-- End Hero -->
 
   <main id="main">

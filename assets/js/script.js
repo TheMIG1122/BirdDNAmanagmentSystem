@@ -1,4 +1,4 @@
-setTimeout(console.clear(),1000)
+// setTimeout(console.clear(),1000)
 // Site Custom Script
 function genrate_html(bird_id) {
    return `
@@ -233,4 +233,6 @@ $(document).ready(function(){
         $(this).val(birdidvalue.slice(0, -1)+"-");
     } 
    });
+
+   // BirdID Validation
 });

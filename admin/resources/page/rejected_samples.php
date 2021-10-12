@@ -38,7 +38,7 @@
                                 </tr>
                             </thead>
                             <div class="tbody">
-                                <?php //get_tested_samples(); ?>
+                                <?php get_tested_samples(); ?>
                             </div>
                         </table>
                     </div>

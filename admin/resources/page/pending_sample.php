@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>DNA ID</th>
+                                    <th>Owner Name</th>
                                     <th>Bird ID</th>
                                     <th>Specie</th>
                                     <th>Sample Type</th>

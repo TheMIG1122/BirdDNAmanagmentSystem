@@ -438,6 +438,7 @@ function get_pending_samples()
 $row = <<<DELIMETER
 <tr>
 	<td>{$data['id']}</td>
+	<td>{$owner_name}</td>
 	<td><b>{$bird_id}</b></td>
 	<td>{$specie}</td>
 	<td>{$type}</td>
@@ -487,6 +488,7 @@ function get_tested_samples()
 $row = <<<DELIMETER
 <tr>
 	<td>{$data['id']}</td>
+	<td>{$owner_name}</td>
 	<td><b>{$bird_id}</b></td>
 	<td>{$specie}</td>
 	<td>{$type}</td>
