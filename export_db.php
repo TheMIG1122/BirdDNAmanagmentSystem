@@ -1,9 +1,14 @@
 <?php 
     //ENTER THE RELEVANT INFO BELOW
-    $mysqlUserName      = "root";
-    $mysqlPassword      = "";
+    // $mysqlUserName      = "root";
+    // $mysqlPassword      = "";
+    // $mysqlHostName      = "localhost";
+    // $DbName             = "techroar_birddna";
+
+    $mysqlUserName      = "qualitydnalabcom_qualitydnalab";
+    $mysqlPassword      = "$1]L@X_]}(zm";
     $mysqlHostName      = "localhost";
-    $DbName             = "techroar_birddna";
+    $DbName             = "qualitydnalabcom_qualitydnalab";
     $backup_name        = "mybackup.sql";
     $tables             = "Your tables";
 

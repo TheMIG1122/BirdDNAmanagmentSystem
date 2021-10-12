@@ -2058,3 +2058,25 @@ section#hero {
   color: #fff;
   transform: translateX(-50%);
 }
+
+.go-to-next-section {
+  animation: UpnDown 1s linear infinite;
+}
+
+@keyframes UpnDown{
+  0%{
+    transform: translateY(-10px);
+  }
+  25%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(6px);
+  }
+  75%{
+    transform: translateY(0px);
+  }
+  100%{
+    transform: translateY(-10px);
+  }
+}
