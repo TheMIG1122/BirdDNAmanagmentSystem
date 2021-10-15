@@ -20,8 +20,8 @@
 
 
 
-  <div class="container">
-    <div class="row">
+  <div class=" ">
+    <div class=" ">
         <div class="col-md-12 col-xl-12">
             <div class="card p-2">
                 <div class="card-body">
@@ -38,7 +38,7 @@
                                     <th>Payment</th>
                                     <th>Received Date</th>
                                     <th>Action</th>
-                                    <th style="width:80px">Action</th>
+                                    <th style="width:100px">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="tbody">

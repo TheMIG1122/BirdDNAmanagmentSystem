@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Quality DNA Lab</title>
+  <title>Quality Birds DNA Lab</title>
   <meta name="description" content="Quality DNA Lab is Offering all Kind of Birds DNA services in affordable price. We are having Imported Equipment's for Birds DNA testing with 99.9% Accuracy of Results. Quality of Service is our First Priority.">
 
   <meta name="robots" content="index, follow" />
 
-  <meta content="Quality DNA Lab, Birds DNA, Birds DNA Lab, Quality, Ali Birds, Ali Birds Shop, Lahore DNA Lab, Bird DNA, Birds DNA Testing,Birds Sampling" name="keywords">
+  <meta content="Quality Birds DNA Lab, Birds DNA, Birds DNA Lab, Quality, Ali Birds, Ali Birds Shop, Lahore Birds DNA Lab, Bird DNA, Birds DNA Testing,Birds Sampling" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/images/dna.png" rel="icon">
@@ -66,7 +66,7 @@
     <div class="container">
       <div class="row align-items-center justify-content-between">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Quality DNA Lab</h1>
+          <h1 data-aos="fade-up">Quality Birds DNA Lab</h1>
           <h2 data-aos="fade-up" data-aos-delay="400">Please Enter your Mobile Number or Bird Ring ID to get your DNA Results.</h2>
           <div data-aos="fade-up" data-aos-delay="600"><br>
             <div class="text-center text-lg-start" style="font-size: 22px;">
@@ -80,12 +80,12 @@
               <div class="search-form-inner">
                 <form action="search.php" method="POST">
                   <div class="form-group mt-4">
-                    <label>Phone Number</label>
-                    <input type="text" placeholder="Enter Here..." class="form-control" name='phone' required>
+                    <label>Phone Number:</label>
+                    <input type="text" style="text-transform: uppercase;" placeholder="Enter Here..." class="form-control" name='phone' required>
                   </div>
                   <div class="form-group mt-4">
-                    <label>Bird ID</label>
-                    <input type="text" placeholder="Enter Here..." class="form-control" name='dna' id="bird_ID">
+                    <label>Bird Ring ID:</label>
+                    <input type="text" style="text-transform: uppercase;" placeholder="Enter Here..." class="form-control" name='dna' id="bird_ID">
                   </div>
                   <div class="form-group">
                   <button class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center border-0" type='submit' name='search_sample'>
@@ -113,7 +113,7 @@
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
               <h3>Who We Are</h3>
-              <h2>Quality DNA Lab is Offering all Kind of Birds DNA Services in Affordable Price.</h2>
+              <h2>Quality Birds DNA Lab is Offering all Kind of Birds DNA Services in Affordable Price.</h2>
               <p>
                 Bird DNA testing is the easiest and most accurate way to determine whether your bird is male or female. The process is simple: order a DNA-collection kit from us (included in the price of testing) or make your own kit at home, and then send us the samples. Once samples are received, your results are emailed to you within 5 business days. We test hundreds of species.
               </p>
@@ -197,7 +197,7 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Great Services offered by Quality DNA Lab. Got Accurate Results of my Birds DNA. Highly Recommended.
+                  Great Services offered by Quality Birds DNA Lab. Got Accurate Results of my Birds DNA. Highly Recommended.
                 </p>
                 <div class="profile mt-auto">
                   <h3>Ali Haider</h3>

@@ -500,7 +500,7 @@ function get_tested_samples()
 		extract($owner);
 		$card_btn = "<span class='text-danger'>Pending</span>";
 		if ($result != "") {
-			$card_btn = '<a href="../dna_card.php?sample_id='.$data['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block">Print Card</a>';
+			$card_btn = '<a href="../dna_card.php?sample_id='.$data['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block"><i class="icofont icofont-print"></i> Print Card</a>';
 		}
 		$result = create_gender_div($result);
 		$payment_div = genrate_payment_div($payment_status);
