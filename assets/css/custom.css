@@ -224,3 +224,7 @@ body {
 .icon-img {
     padding-right: 11px;
 }
+
+.delete-sample-search {
+    cursor: pointer;
+}

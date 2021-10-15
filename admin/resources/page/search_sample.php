@@ -29,6 +29,10 @@
                     </div>
                     <div class="col-12">
                         <form action="#" method="POST">
+                            <input type="hidden" name="dna_id" id="delete-sampleID">
+                            <input type="hidden" name="qty" id="delete-qty">
+                            <input type="hidden" name="owner_id" id="delete-ownerID">
+                            <input type="hidden" name="delete_sample" id="delete_sample">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -45,7 +49,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label style='opacity : 0'>.</label>
-                                        <button class="btn btn-success form-control" name='search_sample'>Search</button>
+                                        <button class="btn btn-success form-control" name='search_sample' id="search-form-admin">Search</button>
                                     </div>
                                 </div>
                             </div>

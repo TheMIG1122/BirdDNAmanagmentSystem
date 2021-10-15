@@ -78,8 +78,8 @@ function genrate_html(bird_id,temp_count) {
  
      // Add more sample Rows
      $(document).on('click','.add-sample-rows',function(){
-         var row_count = $("#add-samples-box tr").length;
          $("#add-samples-box").append(genrate_html(birdID(8),row_count+1));
+         var row_count = $("#add-samples-box tr").length;
          $("#quantity-val").val(row_count);
          calculate_total();
      });
@@ -271,5 +271,25 @@ function genrate_html(bird_id,temp_count) {
          $(this).val(birdidvalue.slice(0, -1)+"-");
      }
     });
- 
+
+    $(document).on('click','.delete-sample-search',function(){
+        var sample_id = $(this).attr('data-sampleID');
+        var qty = $(this).attr('data-qty');
+        var owner_id = $(this).attr('data-ownerID');
+        $("#delete-sampleID").val(sample_id);
+        $("#delete-qty").val(qty);
+        $("#delete-ownerID").val(owner_id);
+        $("#delete_sample").val("true");
+        $("#search-form-admin").trigger("click");
+    });
+
+    $(document).on('click','.delete-button',function(){
+        var redirect_url = $(this).attr('data-URL');
+        custom_alert('warning','Are you sure to delete',redirect_url);
+    });
+
+    $(document).on('click','.delete-sample',function(){
+        var redirect_url = $(this).attr('data-URL');
+        custom_alert('warning','Are you sure to delete',redirect_url);
+    });
  });

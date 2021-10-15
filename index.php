@@ -81,14 +81,14 @@
                 <form action="search.php" method="POST">
                   <div class="form-group mt-4">
                     <label>Phone Number:</label>
-                    <input type="text" style="text-transform: uppercase;" placeholder="Enter Here..." class="form-control" name='phone' required>
+                    <input type="text" style="text-transform: uppercase;" placeholder="Enter Here..." class="form-control" id="phone-number-value" maxlength="11" title="Please enter 11 digit number" name='phone' required>
                   </div>
                   <div class="form-group mt-4">
                     <label>Bird Ring ID:</label>
                     <input type="text" style="text-transform: uppercase;" placeholder="Enter Here..." class="form-control" name='dna' id="bird_ID">
                   </div>
                   <div class="form-group">
-                  <button class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center border-0" type='submit' name='search_sample'>
+                  <button class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center border-0" type='submit' name='search_sample' id="submit-button">
                     <span>Search</span>
                     <i class="bi bi-arrow-right"></i>
                   </button>
@@ -346,6 +346,45 @@ Lahore, Pakistan</p>
          var birdidvalue = $(this).val();
         //  console.log(birdidvalue)
          $(this).val(birdidvalue.slice(0, -1)+"-");
+     }
+    });
+        // Validate Phone Number
+        $("#phone-number-value").keyup(function(event){
+     var key = event.charCode || event.keyCode;
+     // console.log(event);
+     event.preventDefault();
+     if (key == 32) {
+         var phonevalue = $("#phone-number-value").val();
+         $("#phone-number-value").val(phonevalue.slice(0, -1));
+     } else {
+         var phone_number_value = $(this).val();
+         phone_regex = /\d{11}/
+         if(!phone_regex.test(phone_number_value)){
+              $(this).css("border-color","red");
+              $("#submit-button").prop("disabled",true);
+         } else {
+              $(this).css("border-color","#e9ecef");
+              $("#submit-button").prop("disabled",false);
+         }
+     }
+    });
+    $("#phone-number-value").change(function(event){
+     var key = event.charCode || event.keyCode;
+     // console.log(event);
+     event.preventDefault();
+     if (key == 32) {
+         var phonevalue = $("#phone-number-value").val();
+         $("#phone-number-value").val(phonevalue.slice(0, -1));
+     } else {
+         var phone_number_value = $(this).val();
+         phone_regex = /\d{11}/
+         if(!phone_regex.test(phone_number_value)){
+              $(this).css("border-color","red");
+              $("#submit-button").prop("disabled",true);
+         } else {
+              $(this).css("border-color","#e9ecef");
+              $("#submit-button").prop("disabled",false);
+         }
      }
     });
   </script>

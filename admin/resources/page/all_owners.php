@@ -1,3 +1,4 @@
+<?php delete_owner(); ?>
 <div class="page-wrapper">
 	<div class="page-breadcrumb">
 		<div class="row align-items-center">

@@ -321,6 +321,14 @@ function get_total_amount_id($owner_id)
 	return $total;
 }
 
+function validate_bird_id_search($user,$db)
+{
+	$user = str_replace("-","",strtolower($user));
+	$db = str_replace("-","",strtolower($db));
+	$user = str_replace(" ","",$user);
+	$db = str_replace(" ","",$db);
+	return ($user == $db) ? true : false ;
+}
 /*
 
 // Admin Functions
@@ -371,7 +379,6 @@ function add_sample()
 {
 	if(isset($_POST['add_sample'])) {
 		extract($_POST);
-		
 		$data = array (
 			'owner_name'=> $name,
 			'owner_phone'=> $phone,
@@ -388,7 +395,7 @@ function add_sample()
 		for ( $i=0; $i<$count; $i++ ) {
 			$bird_id[$i] = str_replace(" ","-",$bird_id[$i]);
 			$data = array (
-				'bird_id' => $bird_id[$i],
+				'bird_id' => strtoupper($bird_id[$i]),
 				'specie' => $specie[$i],
 				'type' => $type[$i],
 				'owner_id' => $owner_id
@@ -469,7 +476,7 @@ $row = <<<DELIMETER
 	<td>{$received_date}</td>
 	<td class="text-center">
 		<a href="index.php?page=edit_sample&dna_id={$data['id']}" class="d-block mt-1 btn-sm btn-primary border-0">Edit</a>
-		<a href="index.php?page=pending_sample&dna_id={$data['id']}&qty={$quantity}&owner_id={$owner['id']}&delete=true" class="d-block mt-1 btn-sm btn-danger border-0">Delete</a>
+		<a href="#" data-URL="index.php?page=pending_sample&dna_id={$data['id']}&qty={$quantity}&owner_id={$owner['id']}&delete=true" class="d-block mt-1 btn-sm btn-danger border-0 delete-sample">Delete</a>
 
 	</td>
 	<td class="text-center">
@@ -520,7 +527,7 @@ $row = <<<DELIMETER
 	<td>{$dates}</td>
 	<td class="text-center">
 	<a href="index.php?page=edit_sample&dna_id={$data['id']}&tested=true" class="btn-sm btn-primary border-0 d-block mt-1">Edit</a>
-	<a href="index.php?page=tested_sample&dna_id={$data['id']}&qty={$quantity}&owner_id={$owner['id']}&delete=true" class="d-block mt-1 btn-sm btn-danger border-0">Delete</a>
+	<a href="#" data-URL="index.php?page=tested_sample&dna_id={$data['id']}&qty={$quantity}&owner_id={$owner['id']}&delete=true" class="d-block mt-1 btn-sm btn-danger border-0 delete-sample">Delete</a>
 	</td>
 
 	<td class="text-center">
@@ -564,7 +571,7 @@ $row = <<<DELIMETER
 	<td>{$payment_div}</td>
 	<td>{$dates}</td>
 	<td class="text-center">
-		<a href="index.php?page=rejected_samples&dna_id={$data['id']}&qty={$quantity}&owner_id={$owner['id']}&delete=true" class="d-block mt-1 btn-sm btn-danger border-0">Delete</a>
+		<a href="#" data-URL="index.php?page=rejected_samples&dna_id={$data['id']}&qty={$quantity}&owner_id={$owner['id']}&delete=true" class="d-block mt-1 btn-sm btn-danger border-0 delete-sample">Delete</a>
 	</td>
 
 	<td class="text-center">
@@ -581,6 +588,16 @@ DELIMETER;
 
 function get_search_samples($search = "")
 {
+
+	if (isset($_POST['delete_sample'])) {
+		if ($_POST['delete_sample'] != "") {
+			delete_sample_search();
+			unset($_POST['dna_id']);
+			unset($_POST['qty']);
+			unset($_POST['owner_id']);
+			unset($_POST['delete_sample']);
+		}
+	}
 	global $var;
 	global $samples;
 	$samples_div = "";
@@ -588,7 +605,6 @@ function get_search_samples($search = "")
 	$main_count = 0;
 	$sr = 1;
 	extract($_POST);
-	// $sql .= "SELECT dna.owner_name,dna.owner_phone,dna.quality,dna.extra_amount,dna.id AS owner_id,dna.amount,dna.discount,dna.total,dna_samples.*,dna_samples.id AS sample_id ";
 	$sql .= "SELECT * FROM owners ";
 	$sql .= "WHERE owner_phone = '{$phone}' ORDER BY id DESC";
 
@@ -606,51 +622,79 @@ function get_search_samples($search = "")
 		while ( $data = fetch_array($query) ) {
 			extract($data);
 			$sample_sql = "SELECT * FROM dna_samples WHERE owner_id = {$id}";
-			if($dna != "") {
-				$sample_sql .= " AND bird_id = '{$dna}'";
-			}
 
 			if($search == 'true' && $payment_status == 'Credit') {
 				$pdf_btn = '';
 			} else {
 				$pdf_btn = '<a href="'.$folder.'dna_pdf.php?owner_id='.$id.'" target="_blank" class="btn btn-success">Download in PDF</a>';
 			}
-			// echo $sample_sql;
-			// exit();
+
+			
+
 			$sample_query = query($sample_sql);
 			confirm($sample_query);
-			$temp_count = num_rows($sample_query);
-			$amount = intval($amount) * intval($quantity);
-			$total = (intval($amount)+intval($extra_amount))-intval($discount);
-			$rowspan = '';
-$rowspan = <<<DELIMETER
-<td rowspan="{$temp_count}">
-	<p class='text-left'>
-		<b>Amount</b> : {$amount} Rs <br>
-		<b>Extra Amount</b> : {$extra_amount} Rs <br>
-		<b>Discount</b> : {$discount} Rs <br>
-		<b>Total</b> : {$total} Rs
-		<br>
-		{$pdf_btn}
-	</p>
-</td>
-DELIMETER;
-			
-			// echo $rowspan;
 
+			$temp_count = 0;
+			$quantity = 0;
+			while ($sample = fetch_array($sample_query)) {
+				extract($sample);
+				$validate = true;
+				
+				if ($_POST['dna'] != "") {
+					$validate = validate_bird_id_search($_POST['dna'],$bird_id);
+				}
+
+				if ($validate) {
+					$temp_count++;
+					$quantity++;
+				}
+			}
+
+			$amount = intval($amount) * intval($quantity);
+			$total = (intval($amount)+intval($extra_amount))-intval($discount); 
+			$rowspan = '';
+			$rowspan = <<<DELIMETER
+			<td rowspan="{$temp_count}">
+				<p class='text-left'>
+					<b>Amount</b> : {$amount} Rs <br>
+					<b>Extra Amount</b> : {$extra_amount} Rs <br>
+					<b>Discount</b> : {$discount} Rs <br>
+					<b>Total</b> : {$total} Rs
+					<br>
+					{$pdf_btn}
+				</p>
+			</td>
+			DELIMETER;
 			$row_count = 1;
+
 			if ($temp_count > 0) {
 				$main_count = 1;
 			}
-				while ($sample = fetch_array($sample_query)) {
-					extract($sample);
+
+			$sample_query = query($sample_sql);
+			confirm($sample_query);
+
+			while ($sample = fetch_array($sample_query)) {
+				
+				extract($sample);
+				$validate = true;
+
+				if ($_POST['dna'] != "") {
+					$validate = validate_bird_id_search($_POST['dna'],$bird_id);
+				}
+
+				if ($validate) {
+
 					$card_btn = "<span class='text-danger'>N/A</span>";
+
 					if ($result != "") {
 						$card_btn = '<a href="'.$folder.'dna_card.php?sample_id='.$sample['id'].'" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$owner_phone.'">Print Card</a>';
 					}
+
 					if ($search == "true") {
 						$card_btn = '<a href="'.$folder.'dna_card.php?sample_id='.$sample['id'].'&print=false" target="_blank" class="btn-sm btn-primary mt-1 border-0 d-block" data-phone="'.$owner_phone.'">View Card</a>';
 					}
+
 					if ($result == "") {
 						$result = "<span class='text-danger'>Pending</span>";
 						$data['result'] = $result;
@@ -660,44 +704,49 @@ DELIMETER;
 					}
 	
 					$quality_div = "";
+					$delete_btn = "";
+
 					if ($search == "") {
 						$quality_div = "<td><b>{$var['add_sample']['quality_text'][$quality]}</b></td>";						
+						$delete_btn = "<button class='btn-sm btn-danger mt-1 border-0 d-block delete-sample-search w-100' data-sampleID='".$sample['id']."' data-qty='".$data['quantity']."' data-ownerID='".$data['id']."'>Delete</button>";
 					} else {
 						if ($data['payment_status'] == 'Credit') {
 							$result = "<span class='text-danger'>Payment Pending</span>";
 							$card_btn = "<span class='text-danger'>N/A</span>";
 						}
 					}
+
 					$received_date = convert_date($sample['created_at']);
 					$reported_date = convert_date($sample['updated_at']);
+					
 					if ($sample['result'] == "") {
 						$reported_date = "<span class='text-danger'>Pending</span>";
 					}
+					
 					$dates = "<b>Received Date: </b> ".$received_date." <b><br>Reported Date: </b> ".$reported_date;
 					$rowspan = ($row_count == 1) ? $rowspan : '' ;
-$row = <<<DELIMETER
-<tr>
-	<td>{$sr}</td>
-	{$rowspan}
-	<td>{$sample['id']}</td>
-	<td>{$bird_id}</td>
-	<td>{$specie}</td>
-	<td>{$type}</td> 
-	<td>{$result}</td>
-	{$quality_div}
-	<td>{$dates}</td>
-	<td class="text-center">
-		{$card_btn}
-	</td>
-</tr>
-DELIMETER;
+					$row = <<<DELIMETER
+					<tr>
+						<td>{$sr}</td>
+						{$rowspan}
+						<td>{$sample['id']}</td>
+						<td>{$bird_id}</td>
+						<td>{$specie}</td>
+						<td>{$type}</td> 
+						<td>{$result}</td>
+						{$quality_div}
+						<td>{$dates}</td>
+						<td class="text-center">
+							{$card_btn}
+							{$delete_btn}
+						</td>
+					</tr>
+					DELIMETER;
 					echo $row;
 					$row_count++;
 					$sr++;
 				}
-			// } else {
-				// echo "<tr><td colspan='8'><p class='text-center text-danger'>No Record Found.</p></td><tr/>";
-			// }
+			}
 		}
 	} else {
 		$main_count = 0;
@@ -848,15 +897,9 @@ DELIMETER;
 function get_total_bar_search() {
 	if (isset($_POST['search_sample'])) {
 		extract($_POST);
-		if ($dna != "") {
-			$sql = "";
-			$sql .= "SELECT owners.* FROM owners,dna_samples ";
-			$sql .= " WHERE dna_samples.owner_id = owners.id AND dna_samples.bird_id = '{$dna}' AND owners.owner_phone = '{$phone}'";
-		} else {
-			$sql = "";
-			$sql .= "SELECT owners.* FROM owners ";
-			$sql .= "WHERE owner_phone = '{$phone}'";
-		}
+		$sql = "";
+		$sql .= "SELECT owners.* FROM owners ";
+		$sql .= "WHERE owner_phone = '{$phone}'";
 
 		$query = query($sql);
 		confirm($query);
@@ -867,6 +910,21 @@ function get_total_bar_search() {
 		if ($count > 0) {
 			while ($data = fetch_array($query)) {
 				extract($data);
+				$sample_sql = "SELECT bird_id FROM dna_samples WHERE owner_id={$data['id']}";
+				$sample_query = query($sample_sql);
+				confirm($sample_query);
+				$quantity = 0;
+				while ($sample_data = fetch_array($sample_query)) {
+					extract($sample_data);
+					$validate = true;
+					if ($_POST['dna'] != "") {
+						$validate = validate_bird_id_search($_POST['dna'],$bird_id);;
+					}
+
+					if ($validate) {
+						$quantity++;
+					}
+				}
 				$subTotal = ((intval($quantity)*intval($amount)) + intval($extra_amount)) - intval($discount);
 				$Total = $Total+$subTotal;
 				$tQTY = $quantity+$tQTY;
@@ -924,6 +982,36 @@ function delete_sample()
 			confirm($query);
 			sweetalert('success','Sample Deleted successfuly.','index.php?page='.$page);
 		}
+	}
+}
+
+function delete_sample_search()
+{
+	extract($_POST);
+	$records = count_row('dna_samples','WHERE owner_id='.$owner_id.'');
+	if ($records > 1) {
+		$sql = "DELETE FROM dna_samples WHERE id={$dna_id}";
+		$query = query($sql);
+		confirm($query);
+
+		$sql1 = "SELECT * FROM owners WHERE id = ".$owner_id."";
+		$query1 = query($sql1);
+		confirm($query1);
+		$data1 = fetch_array($query1);
+		$remaining = $data1['total'] - $data1['amount'];
+
+		$data = array (
+			'quantity' => intval($qty)-1,
+			'total' => $remaining
+		);
+		update_data('owners',$data,'id = '.$owner_id.'');
+	} elseif ($records == 1) {
+		$sql = "DELETE FROM dna_samples WHERE id={$dna_id}";
+		$query = query($sql);
+		confirm($query);
+		$sql = "DELETE FROM owners WHERE id={$owner_id}";
+		$query = query($sql);
+		confirm($query);
 	}
 }
 // function update_data($table,$data,$where)
@@ -1005,10 +1093,28 @@ $row = <<<DELIMETER
 	<td>{$date}</td>
 	<td class="text-center">
 		<a target="_blank"  style="display: inline-block;" href="index.php?page=dna_detail&owner_id={$id}&cashamount={$total}&quality={$quality}&owner=true" class="btn-sm btn-info border-0">Detail</a>
+		<a href="#" data-URL="index.php?page=all_owners&owner_id={$id}&delete_confirm=true" class="btn-sm btn-danger delete-button">Delete</a>
 	</td>
 </tr>
 DELIMETER;
 		echo $row;
 		$sr++;
+	}
+}
+
+
+function delete_owner()
+{
+	if (isset($_GET['delete_confirm'])) {
+		extract($_GET);
+		$sql = "DELETE FROM dna_samples WHERE owner_id={$owner_id}";
+		$query = query($sql);
+		confirm($query);
+
+		$sql = "DELETE FROM owners WHERE id={$owner_id}";
+		$query = query($sql);
+		confirm($query);
+
+		sweetalert('success','Owner Deleted successfuly.','index.php?page='.$page);
 	}
 }
